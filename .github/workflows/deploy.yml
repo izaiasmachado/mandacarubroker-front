@@ -37,8 +37,8 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Connect to Azure VM and run Docker Compose
+      - name: Connect to Azure VM and run Docker
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
           chmod 400 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key william@172.176.145.143 'sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/mandacarubroker-front || true && sudo docker stop mandacarubroker-front || true && docker rm mandacarubroker-front || true && docker run --log-opt labels=applications,environment --restart unless-stopped --name mandacarubroker-front --env-file=/home/william/mandacaru-broker-jandaia/.env -p 8080:8080 -d ${{ secrets.DOCKERHUB_USERNAME }}/mandacarubroker-front'
+          ssh -o StrictHostKeyChecking=no -i private_key william@172.176.145.143 'sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/mandacarubroker-front || true && sudo docker stop mandacarubroker-front || true && docker rm mandacarubroker-front || true && docker run --log-opt labels=applications,environment --restart unless-stopped --name mandacarubroker-front --env-file=/home/william/mandacaru-broker-jandaia/.env -p 3000:3000 -d ${{ secrets.DOCKERHUB_USERNAME }}/mandacarubroker-front'
