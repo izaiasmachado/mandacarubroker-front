@@ -10,7 +10,12 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        font-size: 62.5%; // 1rem = 10px -> 1o/16px = 62.5% (1.4rem = 14px)
+        font-size: 62.5%; // 1rem = 10px -> 1o/16px = 62.5% (1.4rem = 14px)        
+    }
+
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;        
+        background-color: #011B3F;
     }
 `
 
