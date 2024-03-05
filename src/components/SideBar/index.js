@@ -4,8 +4,7 @@ import Balance from "../BalanceGroup";
 
 const SideBar = () => (
     <S.SideBar>
-        <Balance>
-            
+        <Balance>            
         </Balance>
     </S.SideBar>
 );
