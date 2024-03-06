@@ -6,7 +6,7 @@ import Balance from "@/components/BalanceGroup";
 const Carteira = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("");
+  const [transactionType, setTransactionType] = useState("deposito");
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
