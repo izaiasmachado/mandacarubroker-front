@@ -1,10 +1,32 @@
+'use client'
+
+import { useState } from "react";
+
 import * as S from "./styles";
+import Button from "@/components/UI/Button";
+import Negociar from "./Negociar";
+import Historico from "./Historico";
+import Carteira from "./Carteira";
 
 const RightConteiner = () => {
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
   return (
     <S.RightConteiner>
+      <S.Controls>
+        <Button text="Negociar" clicked={activeButton === "negociar"} onClick={() => handleButtonClick("negociar")}/>
+        <Button text="Histórico" clicked={activeButton === "historico"} onClick={() => handleButtonClick("historico")}/>
+        <Button text="Carteira" clicked={activeButton === "carteira"} onClick={() => handleButtonClick("carteira")}/>
+      </S.Controls>
+      {activeButton === "negociar" && <Negociar />}
+      {activeButton === "historico" && <Historico />}
+      {activeButton === "carteira" && <Carteira />}
     </S.RightConteiner>
-  );s
+  );
 };
 
 export default RightConteiner;
