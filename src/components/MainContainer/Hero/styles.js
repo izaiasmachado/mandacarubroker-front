@@ -20,7 +20,7 @@ export const HeroText = styled.h1`
 `;
 
 export const Line = styled.div`
-    background-color: #FF8C1F;
+    background-color: #FFF;
     width: 140px;
     height: 5px;
     border-radius: 5px;
