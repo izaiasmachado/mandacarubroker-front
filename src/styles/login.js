@@ -55,6 +55,7 @@ export const LoginSubmitionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 `;
 
 export const DontHaveAccountMessage = styled.p`
@@ -65,4 +66,32 @@ export const DontHaveAccountMessage = styled.p`
     color: #fff;
     text-decoration: underline;
   }
+`;
+
+export const ApplicationHeroTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+`;
+
+export const ApplicationHeroTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 7.2rem;
+  margin-top: -130px;
+`;
+
+export const ApplicationHeroTitleFirstLine = styled.div`
+  font-weight: 700;
+  color: #fff;
+  mix-blend-mode: lighten;
+`;
+
+export const ApplicationHeroTitleSecondLine = styled.div`
+  font-weight: 700;
+  color: #00bbf4;
+  mix-blend-mode: color-dodge;
 `;

@@ -9,6 +9,10 @@ import {
   PartnerLogosContainer,
   LoginSubmitionContainer,
   DontHaveAccountMessage,
+  ApplicationHeroTitleContainer,
+  ApplicationHeroTitle,
+  ApplicationHeroTitleFirstLine,
+  ApplicationHeroTitleSecondLine,
 } from "@/styles/login";
 
 export default function Login() {
@@ -16,6 +20,16 @@ export default function Login() {
     <>
       <Background />
       <LoginWrapper>
+        <ApplicationHeroTitleContainer>
+          <ApplicationHeroTitle>
+            <ApplicationHeroTitleFirstLine>
+              MANDACARU
+            </ApplicationHeroTitleFirstLine>
+            <ApplicationHeroTitleSecondLine>
+              BROKER
+            </ApplicationHeroTitleSecondLine>
+          </ApplicationHeroTitle>
+        </ApplicationHeroTitleContainer>
         <LoginConteiner>
           <PartnerLogosContainer>
             <PartnerLogo>
