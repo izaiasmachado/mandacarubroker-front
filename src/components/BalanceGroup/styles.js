@@ -16,6 +16,26 @@ export const Balance = styled.div`
 export const Icon = styled.div`
     width: ${props => props.width}px;
     height: ${props => props.height}px;
+    margin-top: 2rem;
+`
+
+export const Currency = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: flex-start;
+    min-width: 5rem;
+    span {
+        min-height: 2rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        hr {
+            width: 100%;
+            height: 2px;
+        }
+    }
+
 `
 
 export const BalanceLeftContent = styled.div`
@@ -25,9 +45,9 @@ export const BalanceLeftContent = styled.div`
 `
 
 export const BalanceRightcontent = styled.div`
-    gap: 10px;
+    gap: 1.2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 `
 
