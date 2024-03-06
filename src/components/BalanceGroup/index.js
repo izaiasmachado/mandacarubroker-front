@@ -18,7 +18,7 @@ const Balance = () => {
       <S.BalanceRightcontent>
         <S.Currency>
           <h3>Saldo</h3>
-          <span>{showPassword ? <hr></hr> : "R$ 0,00"}</span>
+          <span>{showPassword ? "R$ 0,00" : <hr></hr>}</span>
         </S.Currency>
         <S.Icon width={15} height={18} onClick={togglePasswordVisibility}>
           <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />

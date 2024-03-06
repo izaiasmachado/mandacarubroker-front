@@ -5,7 +5,7 @@ import Button from "@/components/UI/Button";
 const Negociar = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("");
+  const [transactionType, setTransactionType] = useState("compra");
 
   const handleValueChange = (e) => {
     setValue(e.target.value);

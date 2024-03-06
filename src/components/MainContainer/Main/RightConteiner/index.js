@@ -9,7 +9,7 @@ import Historico from "./Historico";
 import Carteira from "./Carteira";
 
 const RightConteiner = () => {
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState("negociar");
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
