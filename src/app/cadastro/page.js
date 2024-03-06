@@ -1,19 +1,18 @@
 "use use client";
 
 import {
-  BackgroundCadastro,
   CadastroWrapper,
   CadastroConteiner,
   CadastroTitle,
   CadastroFormContainer,
-  CadastroFormSubmitButton,
-  Input,
 } from "@/styles/cadastro";
+
+import { Background, SubmitButton, Input } from "@/styles/global";
 
 export default function Cadastro() {
   return (
     <>
-      <BackgroundCadastro />
+      <Background />
       <CadastroWrapper>
         <CadastroConteiner>
           <CadastroTitle>Cadastro</CadastroTitle>
@@ -24,7 +23,7 @@ export default function Cadastro() {
             <Input type="password" placeholder="Senha"></Input>
             <Input type="password" placeholder="Confirme a senha"></Input>
           </CadastroFormContainer>
-          <CadastroFormSubmitButton>Cadastrar</CadastroFormSubmitButton>
+          <SubmitButton>Cadastrar</SubmitButton>
         </CadastroConteiner>
       </CadastroWrapper>
     </>
