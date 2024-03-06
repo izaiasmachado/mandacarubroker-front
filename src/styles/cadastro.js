@@ -43,3 +43,10 @@ export const CadastroFormContainer = styled.div`
   width: 100%;
   gap: 20px;
 `;
+
+export const TopToolbar = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 20px;
+`;
