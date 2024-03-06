@@ -2,7 +2,23 @@
 
 import styled from "styled-components";
 
+export const BackgroundCadastro = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/img/telaLogin.jpg");
+  filter: blur(5px);
+  opacity: 0.4;
+`;
+
 export const CadastroWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

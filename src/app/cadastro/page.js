@@ -1,6 +1,7 @@
 "use use client";
 
 import {
+  BackgroundCadastro,
   CadastroWrapper,
   CadastroConteiner,
   CadastroTitle,
@@ -11,17 +12,21 @@ import {
 
 export default function Cadastro() {
   return (
-    <CadastroWrapper>
-      <CadastroConteiner>
-        <CadastroTitle>Cadastro</CadastroTitle>
-        <CadastroFormContainer>
-          <Input type="text" placeholder="Nome de usuário"></Input>
-          <Input type="text" placeholder="E-mail"></Input>
-          <Input type="password" placeholder="Senha"></Input>
-          <Input type="password" placeholder="Confirme a senha"></Input>
-        </CadastroFormContainer>
-        <CadastroFormSubmitButton>Cadastrar</CadastroFormSubmitButton>
-      </CadastroConteiner>
-    </CadastroWrapper>
+    <>
+      <BackgroundCadastro />
+      <CadastroWrapper>
+        <CadastroConteiner>
+          <CadastroTitle>Cadastro</CadastroTitle>
+          <CadastroFormContainer>
+            <Input type="text" placeholder="Nome de usuário"></Input>
+            <Input type="text" placeholder="E-mail"></Input>
+            <Input type="date"></Input>
+            <Input type="password" placeholder="Senha"></Input>
+            <Input type="password" placeholder="Confirme a senha"></Input>
+          </CadastroFormContainer>
+          <CadastroFormSubmitButton>Cadastrar</CadastroFormSubmitButton>
+        </CadastroConteiner>
+      </CadastroWrapper>
+    </>
   );
 }
