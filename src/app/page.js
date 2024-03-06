@@ -1,12 +1,7 @@
+import Home from "./Dashboard/page";
 
-import NavBar from "@/components/NavBar";
-import MainGroup from "@/components/MainContainer";
-
-export default function Home() {
+export default function Dashboard() {
   return (
-    <>
-      <NavBar />
-      <MainGroup />
-    </>
+    <Home/>
   );
 }
