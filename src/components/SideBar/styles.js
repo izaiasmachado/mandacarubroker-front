@@ -25,11 +25,11 @@ export const ContainerProfile = styled.div`
 export const Icon = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
-  color: #ff8c1f;
-  margin-left: 0.75rem;
-  margin-top: 0.45rem;
 `;
 export const ContainerUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;

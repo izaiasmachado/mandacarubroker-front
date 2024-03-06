@@ -1,7 +1,6 @@
 import * as S from "./styles";
 import Balance from "../BalanceGroup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FaUser } from "react-icons/fa6";
 
 import {
     ContainerProfile,
@@ -15,8 +14,8 @@ const SideBar = () => (
     <S.SideBar> 
              <ContainerProfile>
           <ContainerUser>
-            <S.Icon width={20} height={18}>
-              <FontAwesomeIcon icon={faUser} />
+            <S.Icon>
+              <FaUser size={25} color={"orange"} />
             </S.Icon>
           </ContainerUser>
             <InformationUser>

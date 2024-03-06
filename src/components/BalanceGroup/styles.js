@@ -8,7 +8,7 @@ export const Balance = styled.div`
     justify-content: space-around;
     background-color: #022A5D;
     color: #fff;
-    min-width: 200px;
+    width: 100%;
     min-height: 60px;
     border-radius: 3px;
 `

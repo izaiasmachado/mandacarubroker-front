@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { faWallet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { FaWallet, FaEye, FaEyeSlash } from "react-icons/fa6";
 import * as S from "./styles";
 
 const Balance = () => {
@@ -16,12 +15,16 @@ const Balance = () => {
   return (
     <S.Balance>
       <S.BalanceRightcontent>
+        <FaWallet size={25} color={"#fff"} />
         <S.Currency>
           <h3>Saldo</h3>
           <span>{showPassword ? "R$ 0,00" : <hr></hr>}</span>
         </S.Currency>
-        <S.Icon width={15} height={18} onClick={togglePasswordVisibility}>
-          <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+        <S.Icon onClick={togglePasswordVisibility}>
+          {showPassword
+            ?  <FaEye size={15} color={"#fff"} />
+            :  <FaEyeSlash size={15} color={"#fff"} />
+          }
         </S.Icon>
       </S.BalanceRightcontent>
     </S.Balance>
