@@ -1,32 +1,26 @@
 import {
-  BackgroundCadastro,
   CadastroWrapper,
   CadastroConteiner,
   CadastroTitle,
   CadastroFormContainer,
-  CadastroFormSubmitButton,
-  Input,
   TopToolbar,
 } from "@/styles/cadastro";
 
+import { Background, SubmitButton, Input } from "@/styles/global";
 import { FaArrowLeft } from "react-icons/fa";
+
+import Link from "next/link";
 
 export default function Cadastro() {
   return (
     <>
-      <BackgroundCadastro />
+      <Background />
       <CadastroWrapper>
         <CadastroConteiner>
           <TopToolbar>
-            <a href="/" alt="Voltar para a página inicial">
-              <FaArrowLeft
-                style={{
-                  cursor: "pointer",
-                }}
-                size={20}
-                color={"#fff"}
-              />
-            </a>
+            <Link href="/login">
+              <FaArrowLeft size={20} color={"#fff"} />
+            </Link>
           </TopToolbar>
           <CadastroFormContainer>
             <CadastroTitle>Cadastro</CadastroTitle>
@@ -35,7 +29,7 @@ export default function Cadastro() {
             <Input type="date"></Input>
             <Input type="password" placeholder="Senha"></Input>
             <Input type="password" placeholder="Confirme a senha"></Input>
-            <CadastroFormSubmitButton>Cadastrar</CadastroFormSubmitButton>
+            <SubmitButton>Cadastrar</SubmitButton>
           </CadastroFormContainer>
         </CadastroConteiner>
       </CadastroWrapper>

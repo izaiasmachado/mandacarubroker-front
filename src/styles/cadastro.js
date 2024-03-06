@@ -2,18 +2,6 @@
 
 import styled from "styled-components";
 
-export const BackgroundCadastro = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("/img/telaLogin.jpg");
-  filter: blur(5px);
-  opacity: 0.4;
-`;
-
 export const CadastroWrapper = styled.div`
   position: fixed;
   left: 0;
@@ -82,27 +70,7 @@ export const Input = styled.input`
   border: none;
   max-width: 250px;
   width: 100%;
-  line-height: 40px;
-  border-bottom: 2px solid #ff8c1f;
-
-  &::placeholder {
-    color: #fff;
-  }
-  &:focus {
-    outline: none;
-  }
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
-    -webkit-transition-delay: 9999s;
-  }
-  &:hover,
-  &:-webkit-autofill:hover {
-    padding-bottom: 5px;
-    transition: 0.3s;
-  }
+  padding: 0 20px;
 `;
 
 export const TopToolbar = styled.div`
