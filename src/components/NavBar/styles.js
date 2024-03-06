@@ -54,7 +54,7 @@ export const Icon = styled.div`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   color: #ff8c1f;
-  margin-left: 0.7rem;
+  margin-left: 0.75rem;
   margin-top: 0.45rem;
 `;
 export const ContainerUser = styled.div`

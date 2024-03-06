@@ -24,9 +24,9 @@ const Navbar = () => {
         <LogoWrapper>
           <LogoImg src="./img/b3-icone-white.png" alt="B3 Logo" />
           <LogoTextContainer>
-            <LogoTextTitle>Mandacaru</LogoTextTitle>
+            <LogoTextTitle>MANDACARU</LogoTextTitle>
             <br />
-            <LogoTextSubtitle>Broker</LogoTextSubtitle>
+            <LogoTextSubtitle>BROKER</LogoTextSubtitle>
           </LogoTextContainer>
         </LogoWrapper>
         <ContainerProfile>
