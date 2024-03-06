@@ -21,7 +21,6 @@ const Balance = () => (
             <S.Icon width={14} height={18}>
                 <FontAwesomeIcon icon={faEye}/>
             </S.Icon>
-            <Button text="Extrato"/>
             </S.Extrato>
         </S.BalanceRightcontent>
     </S.Balance>
