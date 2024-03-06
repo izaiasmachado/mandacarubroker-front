@@ -39,7 +39,7 @@ export const CadastroConteiner = styled.div`
   max-height: 500px;
   background-color: #0a3d81;
   border-radius: 10px;
-  gap: 28px;
+  gap: 6px;
 `;
 
 export const CadastroTitle = styled.h1`
@@ -57,6 +57,7 @@ export const CadastroFormContainer = styled.div`
 `;
 
 export const CadastroFormSubmitButton = styled.div`
+  margin-top: 10px;
   font-size: 1.4rem;
   color: #fff;
   padding: 10px 20px;
@@ -102,4 +103,11 @@ export const Input = styled.input`
     padding-bottom: 5px;
     transition: 0.3s;
   }
+`;
+
+export const TopToolbar = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 20px;
 `;
