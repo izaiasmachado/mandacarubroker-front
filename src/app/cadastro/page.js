@@ -9,6 +9,8 @@ import {
 import { Background, SubmitButton, Input } from "@/styles/global";
 import { FaArrowLeft } from "react-icons/fa";
 
+import Link from "next/link";
+
 export default function Cadastro() {
   return (
     <>
@@ -16,15 +18,9 @@ export default function Cadastro() {
       <CadastroWrapper>
         <CadastroConteiner>
           <TopToolbar>
-            <a href="/" alt="Voltar para a página inicial">
-              <FaArrowLeft
-                style={{
-                  cursor: "pointer",
-                }}
-                size={20}
-                color={"#fff"}
-              />
-            </a>
+            <Link href="/login">
+              <FaArrowLeft size={20} color={"#fff"} />
+            </Link>
           </TopToolbar>
           <CadastroFormContainer>
             <CadastroTitle>Cadastro</CadastroTitle>

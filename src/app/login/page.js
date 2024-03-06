@@ -1,5 +1,3 @@
-"use use client";
-
 import { Background, Input, SubmitButton } from "@/styles/global";
 import {
   LoginConteiner,
@@ -14,6 +12,8 @@ import {
   ApplicationHeroTitleFirstLine,
   ApplicationHeroTitleSecondLine,
 } from "@/styles/login";
+
+import Link from "next/link";
 
 export default function Login() {
   return (
@@ -47,7 +47,7 @@ export default function Login() {
           <LoginSubmitionContainer>
             <SubmitButton>Entrar</SubmitButton>
             <DontHaveAccountMessage>
-              Não tem uma conta? <a href="/cadastro">Cadastre-se</a>
+              Não tem uma conta? <Link href="/cadastro">Cadastre-se</Link>
             </DontHaveAccountMessage>
           </LoginSubmitionContainer>
         </LoginConteiner>
