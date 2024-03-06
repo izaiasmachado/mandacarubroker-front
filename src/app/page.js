@@ -1,11 +1,12 @@
-import NavBar from "../components/NavBar";
-import SideBar from "@/components/SideBar";
+
+import NavBar from "@/components/NavBar";
+import MainGroup from "@/components/MainContainer";
 
 export default function Home() {
   return (
     <>
       <NavBar />
-      <SideBar />
+      <MainGroup />
     </>
   );
 }

@@ -9,6 +9,6 @@ export const SideBar = styled.div`
     background-color: #011938;
     color: #fff;
     max-width: 200px;
-    height: 100vh;
+    height: calc(100vh - 6rem);
     padding: 10px;
 `
