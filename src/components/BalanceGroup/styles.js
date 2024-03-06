@@ -5,11 +5,11 @@ import styled from "styled-components"
 export const Balance = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: #022A5D;
     color: #fff;
-    width: 180px;
-    height: 46px;
+    min-width: 200px;
+    min-height: 60px;
     border-radius: 3px;
 `
 
@@ -25,6 +25,7 @@ export const BalanceLeftContent = styled.div`
 `
 
 export const BalanceRightcontent = styled.div`
+    gap: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

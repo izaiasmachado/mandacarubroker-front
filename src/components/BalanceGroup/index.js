@@ -1,6 +1,8 @@
 import { faWallet, faEye } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import Button from '../UI/Button';
+
 import * as S from "./styles";
 
 const Balance = () => (
@@ -19,7 +21,7 @@ const Balance = () => (
             <S.Icon width={14} height={18}>
                 <FontAwesomeIcon icon={faEye}/>
             </S.Icon>
-            <button>Extrato</button>
+            <Button text="Extrato"/>
             </S.Extrato>
         </S.BalanceRightcontent>
     </S.Balance>
