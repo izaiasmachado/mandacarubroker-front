@@ -8,8 +8,8 @@ export const Balance = styled.div`
     justify-content: space-around;
     background-color: #022A5D;
     color: #fff;
-    width: 100%;
-    min-height: 50px;
+    min-width: 200px;
+    min-height: 60px;
     border-radius: 3px;
 `
 
@@ -17,6 +17,7 @@ export const Icon = styled.div`
     width: ${props => props.width}px;
     height: ${props => props.height}px;
     margin-top: 2rem;
+    cursor: pointer;
 `
 
 export const Currency = styled.div`
