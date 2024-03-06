@@ -1,4 +1,6 @@
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 import * as S from "./styles";
 import {
   Nav,
@@ -8,6 +10,11 @@ import {
   LogoTextTitle,
   LogoTextSubtitle,
   LogoTextContainer,
+  ContainerProfile,
+  ContainerUser,
+  InformationUser,
+  Name,
+  UserName,  
 } from "./styles";
 
 const Navbar = () => {
@@ -22,7 +29,17 @@ const Navbar = () => {
             <LogoTextSubtitle>Broker</LogoTextSubtitle>
           </LogoTextContainer>
         </LogoWrapper>
-        <div id="navbar-user"></div>
+        <ContainerProfile>
+          <ContainerUser>
+            <S.Icon width={20} height={18}>
+              <FontAwesomeIcon icon={faUser} />
+            </S.Icon>
+          </ContainerUser>
+            <InformationUser>
+              <Name>Iris Costa</Name>
+              <UserName>coxtairis</UserName>
+            </InformationUser>
+        </ContainerProfile>
       </Container>
     </S.Nav>
   );
