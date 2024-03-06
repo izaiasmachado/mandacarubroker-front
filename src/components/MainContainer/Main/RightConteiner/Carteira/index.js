@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import Balance from "@/components/BalanceGroup";
 
 const Carteira = () => {
   const [value, setValue] = useState("");
@@ -28,6 +29,7 @@ const Carteira = () => {
 
   return (
     <S.Container>
+      <Balance />
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>

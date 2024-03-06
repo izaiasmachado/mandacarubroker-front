@@ -5,14 +5,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  margin-top: 10px;
+  gap: 10px;
   align-items: center;
   width: 100%;
   height: 100%;
   form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     height: 100%;
     justify-content: space-between;
@@ -59,11 +60,11 @@ export const RadioButton = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
 `;
