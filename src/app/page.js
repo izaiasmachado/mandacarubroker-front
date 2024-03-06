@@ -1,3 +1,4 @@
+
 import NavBar from "@/components/NavBar";
 import MainGroup from "@/components/MainContainer";
 
