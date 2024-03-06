@@ -74,6 +74,10 @@ export const ApplicationHeroTitleContainer = styled.div`
   justify-content: center;
   width: 100%;
   color: #fff;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const ApplicationHeroTitle = styled.div`
