@@ -1,10 +1,9 @@
-'use client'
+"use client";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Nav = styled.nav`
   background-color: #011229;
- 
 `;
 
 export const Container = styled.div`
@@ -29,15 +28,56 @@ export const LogoImg = styled.img`
 export const LogoTextTitle = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #F2F2F2;
+  color: #f2f2f2;
 `;
 
 export const LogoTextSubtitle = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00347E;
+  color: #00347e;
 `;
 
 export const LogoTextContainer = styled.div`
-  margin-left: 0.5rem; /* Adicione a margem desejada aqui */
+  margin-left: 0.55rem;
+`;
+
+export const ContainerProfile = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  width: 15rem;
+  height: 4rem;
+`;
+
+export const Icon = styled.div`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  color: #ff8c1f;
+  margin-left: 0.7rem;
+  margin-top: 0.45rem;
+`;
+export const ContainerUser = styled.div`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: solid 2px #ff8c1f;
+  background-color: white;
+`;
+
+export const InformationUser = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+`;
+
+export const Name = styled.span`
+  font-weight: 500;
+  color: white;
+  
+`;
+
+export const UserName = styled.span`
+  font-weight: 600;
+  color: #FF8C1F
 `;
