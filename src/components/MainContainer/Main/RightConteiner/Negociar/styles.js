@@ -59,7 +59,8 @@ export const RadioButton = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const FormContent = styled.div`
