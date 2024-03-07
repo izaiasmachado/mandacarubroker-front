@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const LeftConteiner = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #010E1F;
+    background-color: #011229;
     width: 100%;
     border-radius: 5px;
         h1{
