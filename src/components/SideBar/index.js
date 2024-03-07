@@ -26,7 +26,8 @@ const SideBar = () => {
         );
 
         if (!response.ok) {
-          window.location.href = "/login";
+          window.location.href = "/";
+          localStorage.removeItem("access_token");
         }
 
         const data = await response.json();

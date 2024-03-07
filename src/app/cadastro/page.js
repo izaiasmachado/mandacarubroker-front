@@ -107,7 +107,7 @@ export default function Cadastro() {
     const data = await response.json();
 
     if (response.status === 201) {
-      window.location.href = "/login";
+      window.location.href = "/";
     }
 
     if (response.status === 400) {
@@ -142,7 +142,7 @@ export default function Cadastro() {
       <CadastroWrapper>
         <CadastroConteiner>
           <TopToolbar>
-            <Link href="/login">
+            <Link href="/">
               <FaArrowLeft size={20} color={"#fff"} />
             </Link>
           </TopToolbar>
