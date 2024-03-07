@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import Table from "@/components/UI/Table";
+import TablePortifolio from "@/components/UI/TablePortifolio";
+import TableStocks from "@/components/UI/TableStocks";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
@@ -25,8 +26,8 @@ const LeftConteiner = () => {
           onClick={() => handleButtonClick("portifolio")}
         />
       </S.Controls>
-      {activeTable === "stocks" &&  <Table />}
-      {activeTable === "portifolio" && <Table />}     
+      {activeTable === "stocks" &&  <TableStocks />}
+      {activeTable === "portifolio" && <TablePortifolio />}     
     </S.LeftConteiner>
   );
   s;
