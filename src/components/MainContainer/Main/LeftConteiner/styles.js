@@ -14,3 +14,10 @@ export const LeftConteiner = styled.div`
             justify-content: center;
         }
 `;
+
+export const Controls = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 10px;
+`
