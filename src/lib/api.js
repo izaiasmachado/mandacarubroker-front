@@ -3,5 +3,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://dev-api.mandacarubroker.com.br",
+  baseURL: "https://api.mandacarubroker.com.br",
 });
