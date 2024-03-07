@@ -79,3 +79,16 @@ export const TopToolbar = styled.div`
   width: 100%;
   padding: 0 20px;
 `;
+
+export const ErrorMessagesContainer = styled.div`
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 1.2rem;
+`;
