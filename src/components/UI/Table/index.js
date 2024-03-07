@@ -8,7 +8,7 @@ const Table = () => {
     { symbol: "--", enterprise: "Apple", valor: "R$ 10.00",  qtdStocksUser: "1", position: "1"},
     { symbol: "--", enterprise: "Americanas", valor: "R$ 40.00",  qtdStocksUser: "7", position: "4"},
     { symbol: "--", enterprise: "Banco do Brasil", valor: "R$ 50.00",  qtdStocksUser: "9", position: "5"},
-    { symbol: "--", enterprise: "Magalu", valor: "R$ 2]60.00",  qtdStocksUser: "11", position: "6"},
+    { symbol: "--", enterprise: "Magalu", valor: "R$ 60.00",  qtdStocksUser: "11", position: "6"},
 
     
 
