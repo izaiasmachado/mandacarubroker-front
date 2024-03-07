@@ -43,16 +43,17 @@ export const Input = styled.input`
   line-height: 40px;
   border-bottom: 2px solid #ff8c1f;
 
-  &::placeholder {
-    color: #fff;
-  }
+  &::placeholder,
+  &:active,
   &:focus {
+    color: #fff;
     outline: none;
   }
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
+    background-color: #0a3d81;
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
     -webkit-transition-delay: 9999s;
   }
@@ -78,6 +79,14 @@ const GlobalStyles = createGlobalStyle`
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;        
         background-color: #011B3F;
     }
+`;
+
+export const ValidationErrorMessage = styled.div`
+  color: red;
+  font-size: 1.4rem;
+  width: 100%;
+  max-width: 250px;
+  font-weight: 500;
 `;
 
 export default GlobalStyles;
