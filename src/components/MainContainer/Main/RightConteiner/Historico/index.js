@@ -1,4 +1,4 @@
-import Table from "@/components/UI/Table";
+import Table from "@/components/UI/TablePortifolio";
 import * as S from "./styles";
 
 const Historico = () => {
