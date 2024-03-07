@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { FaUser } from "react-icons/fa6";
 
 function generateUsername(texto) {
-  return "@" + texto.replace(/\s+/g, '').toLowerCase();
+  return "@" + texto.replace(/\s+/g, "").toLowerCase();
 }
 
 const SideBar = () => {
@@ -14,16 +14,19 @@ const SideBar = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://api.mandacarubroker.com.br/profile/me", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("access_token"),
+        const response = await fetch(
+          "https://api.mandacarubroker.com.br/profile/me",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: localStorage.getItem("access_token"),
+            },
           }
-        });
+        );
 
         if (!response.ok) {
-          throw new Error("Erro ao fazer a requisição");
+          window.location.href = "/login";
         }
 
         const data = await response.json();
