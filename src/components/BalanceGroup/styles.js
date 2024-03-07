@@ -11,6 +11,7 @@ export const Balance = styled.div`
     width: 100%;
     min-height: 60px;
     border-radius: 3px;
+    margin-bottom: 10px;
 `
 
 export const Icon = styled.div`

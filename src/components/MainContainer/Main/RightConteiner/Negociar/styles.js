@@ -65,4 +65,5 @@ export const InputGroup = styled.div`
 export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 160px;
 `;

@@ -23,7 +23,7 @@ const Balance = () => {
         <S.Icon onClick={togglePasswordVisibility}>
           {showPassword
             ?  <FaEye size={15} color={"#fff"} />
-            :  <FaEyeSlash size={15} color={"#fff"} />
+            :  <FaEyeSlash size={15} color={"#fff"} style={{ cursor: "pointer" }}/>
           }
         </S.Icon>
       </S.BalanceRightcontent>
