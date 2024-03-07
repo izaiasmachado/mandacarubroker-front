@@ -69,7 +69,7 @@ const Carteira = () => {
             </S.RadioWrapper>
           </S.InputWrapper>
         </S.FormContent>
-        <Button text="Confirmar" width={"100%"} height={"30px"} clicked="false" />
+        <Button text="Confirmar" width={"100%"} height={"30px"} clicked={false} />
       </form>
     </S.Container>
   );
