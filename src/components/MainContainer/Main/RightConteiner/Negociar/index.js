@@ -76,7 +76,7 @@ const Negociar = () => {
             </S.RadioWrapper>
           </S.InputWrapper>
         </S.FormContent>
-        <Button text="Confirmar" width={"100%"} height={30} />
+        <Button text="Confirmar" width={"100%"} height={30} clicked={false}/>
       </form>
     </S.Container>
   );
