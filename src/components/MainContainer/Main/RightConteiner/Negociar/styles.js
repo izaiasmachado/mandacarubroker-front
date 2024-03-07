@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  margin-top: 10px;
   align-items: center;
   width: 100%;
   height: 100%;
@@ -24,7 +24,7 @@ export const InputWrapper = styled.div`
   gap: 5px;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 
 export const Label = styled.label`
@@ -59,10 +59,11 @@ export const RadioButton = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
-  gap: 20px;
+  flex-direction: column;
 `;
 
 export const FormContent = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 160px;
 `;

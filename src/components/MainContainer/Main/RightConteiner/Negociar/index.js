@@ -5,7 +5,7 @@ import Button from "@/components/UI/Button";
 const Negociar = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("");
+  const [transactionType, setTransactionType] = useState("compra");
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -76,7 +76,7 @@ const Negociar = () => {
             </S.RadioWrapper>
           </S.InputWrapper>
         </S.FormContent>
-        <Button text="Confirmar" width={"100%"} height={30} />
+        <Button text="Confirmar" width={"100%"} height={"30px"} clicked={false} />
       </form>
     </S.Container>
   );

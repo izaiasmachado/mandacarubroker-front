@@ -40,7 +40,7 @@ export default function Login() {
       });
       if (credentialsError) setCredentialsError(false);
       localStorage.setItem("access_token", response.data.token);
-      window.location.href = "/";
+      window.location.href = "/dashboard";
     } catch (error) {
       setCredentialsError(true);
     }

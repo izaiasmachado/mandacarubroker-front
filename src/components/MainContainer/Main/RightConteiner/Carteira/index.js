@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import Balance from "@/components/BalanceGroup";
 
 const Carteira = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("");
+  const [transactionType, setTransactionType] = useState("deposito");
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -28,6 +29,7 @@ const Carteira = () => {
 
   return (
     <S.Container>
+      <Balance />
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
@@ -67,7 +69,7 @@ const Carteira = () => {
             </S.RadioWrapper>
           </S.InputWrapper>
         </S.FormContent>
-        <Button text="Confirmar" width={"100%"} height={30} />
+        <Button text="Confirmar" width={"100%"} height={"30px"} clicked={false} />
       </form>
     </S.Container>
   );

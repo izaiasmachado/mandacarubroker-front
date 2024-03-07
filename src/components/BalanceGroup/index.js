@@ -1,30 +1,34 @@
-import { faWallet, faEye } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+"use client";
 
-import Button from '../UI/Button';
+import { useState } from "react";
 
+import { FaWallet, FaEye, FaEyeSlash } from "react-icons/fa6";
 import * as S from "./styles";
 
-const Balance = () => (
+const Balance = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  return (
     <S.Balance>
-        <S.BalanceLeftContent>
-            <S.Icon width={21} height={18}>
-                <FontAwesomeIcon icon={faWallet}/>
-            </S.Icon>
-        </S.BalanceLeftContent>
-        <S.BalanceRightcontent>
-            <div>
-                <h3>Saldo</h3>
-                <h2>R$ 0,00</h2>
-            </div>
-            <S.Extrato>
-            <S.Icon width={14} height={18}>
-                <FontAwesomeIcon icon={faEye}/>
-            </S.Icon>
-            <Button text="Extrato"/>
-            </S.Extrato>
-        </S.BalanceRightcontent>
+      <S.BalanceRightcontent>
+        <FaWallet size={25} color={"#fff"} />
+        <S.Currency>
+          <h3>Saldo</h3>
+          <span>{showPassword ? "R$ 0,00" : <hr></hr>}</span>
+        </S.Currency>
+        <S.Icon onClick={togglePasswordVisibility}>
+          {showPassword
+            ?  <FaEye size={15} color={"#fff"} />
+            :  <FaEyeSlash size={15} color={"#fff"} style={{ cursor: "pointer" }}/>
+          }
+        </S.Icon>
+      </S.BalanceRightcontent>
     </S.Balance>
-);
+  );
+};
 
 export default Balance;

@@ -9,7 +9,7 @@ import Historico from "./Historico";
 import Carteira from "./Carteira";
 
 const RightConteiner = () => {
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState("negociar");
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
@@ -19,11 +19,9 @@ const RightConteiner = () => {
     <S.RightConteiner>
       <S.Controls>
         <Button text="Negociar" clicked={activeButton === "negociar"} onClick={() => handleButtonClick("negociar")}/>
-        <Button text="Histórico" clicked={activeButton === "historico"} onClick={() => handleButtonClick("historico")}/>
         <Button text="Carteira" clicked={activeButton === "carteira"} onClick={() => handleButtonClick("carteira")}/>
       </S.Controls>
       {activeButton === "negociar" && <Negociar />}
-      {activeButton === "historico" && <Historico />}
       {activeButton === "carteira" && <Carteira />}
     </S.RightConteiner>
   );

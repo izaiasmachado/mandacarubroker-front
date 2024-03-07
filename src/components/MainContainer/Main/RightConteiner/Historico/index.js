@@ -1,15 +1,4 @@
-// import * as S from "./styles";
-
-// const Historico = () => {
-  
-//   return (
-//    <h1>Histórico</h1>
-//   );
-// };
-
-// export default Historico;
-
-
+import Table from "@/components/UI/Table";
 import * as S from "./styles";
 
 const Historico = () => {
@@ -28,25 +17,7 @@ const Historico = () => {
   ];
 
   return (
-    <S.Container>
-      <S.Table>
-        <S.TableRowHeader>
-          <S.TableHeader>Stock</S.TableHeader>
-          <S.TableHeader>Valor</S.TableHeader>
-          <S.TableHeader>Data</S.TableHeader>
-        </S.TableRowHeader>
-        {stockData.map((data, index) => (
-          
-          <S.TableRow key={index} flip={index % 2 === 0} >
-         
-            <S.TableCell>{data.name}</S.TableCell>
-            <S.TableCell>{data.valor}</S.TableCell>
-            <S.TableCell>{data.data}</S.TableCell>
-           
-          </S.TableRow>
-        ))}
-      </S.Table>
-    </S.Container>
+    <Table/>
   );
 };
 
