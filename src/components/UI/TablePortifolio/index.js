@@ -11,7 +11,7 @@ const Table = () => {
   useEffect(() => {
     async function fetchStockData() {
       try {
-        const response = await api.get("/stocks", {
+        const response = await api.get("/portfolio", {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
@@ -38,19 +38,21 @@ const Table = () => {
           <S.TableHeader>Posição</S.TableHeader>
 
         </S.TableRowHeader>
-        {stockData.map((data, index) => (
-          
-          <S.TableRow key={index} flip={index % 2 === 0} >
-         
-            <S.TableCell>{data.symbol}</S.TableCell>
-            <S.TableCell>{data.companyName}</S.TableCell>
-            <S.TableCell>{data.price}</S.TableCell>
-            <S.TableCell>{data.qtdStocksUser}</S.TableCell>
-            <S.TableCell>{data.position}</S.TableCell>
-
-           
+        {stockData.length === 0 ? (
+          <S.TableRow>
+            <S.TableEmpty colSpan="5">Você não possui ações em seu portifólio.</S.TableEmpty>
           </S.TableRow>
-        ))}
+        ) : (
+          stockData.map((data, index) => (
+            <S.TableRow key={index} flip={index % 2 === 0}>
+              <S.TableCell>{data.symbol}</S.TableCell>
+              <S.TableCell>{data.companyName}</S.TableCell>
+              <S.TableCell>{data.price}</S.TableCell>
+              <S.TableCell>{data.qtdStocksUser}</S.TableCell>
+              <S.TableCell>{data.position}</S.TableCell>
+            </S.TableRow>
+          ))
+        )}
       </S.Table>
     </S.Container>
   );

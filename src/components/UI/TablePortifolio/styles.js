@@ -37,3 +37,9 @@ export const TableCell = styled.td`
   align-items: center;
   padding: 8px;
 `;
+
+export const TableEmpty = styled.td`
+  color: #FFF;
+  padding: 20px;
+  font-weight: 600;
+`
