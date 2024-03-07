@@ -10,6 +10,7 @@ function generateUsername(texto) {
 
 const SideBar = () => {
   const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,13 +27,16 @@ const SideBar = () => {
         );
 
         if (!response.ok) {
-          window.location.href = "/login";
+          window.location.href = "/";
+          localStorage.removeItem("access_token");
         }
 
         const data = await response.json();
         setUserData(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData();
@@ -47,15 +51,15 @@ const SideBar = () => {
           </S.Icon>
         </S.ContainerUser>
         <S.InformationUser>
-          {userData ? (
-            <>
-              <S.Name>Olá,</S.Name>
-              <S.UserName>{generateUsername(userData.username)}</S.UserName>
-            </>
-          ) : (
+          {isLoading ? (
             <>
               <S.Name>Loading...</S.Name>
               <S.UserName>Loading...</S.UserName>
+            </>
+          ) : (
+            <>
+              <S.Name>Olá,</S.Name>
+              <S.UserName>{generateUsername(userData.username)}</S.UserName>
             </>
           )}
         </S.InformationUser>

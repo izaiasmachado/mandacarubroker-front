@@ -9,7 +9,8 @@ export default function Home() {
     localStorage &&
     !localStorage.getItem("access_token")
   ) {
-    window.location.href = "/login";
+    window.location.href = "/";
+    return <></>;
   }
   return (
     <>
