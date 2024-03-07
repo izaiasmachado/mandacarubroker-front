@@ -43,6 +43,10 @@ export const Input = styled.input`
   line-height: 40px;
   border-bottom: 2px solid #ff8c1f;
 
+  &:invalid {
+    border-bottom: 2px solid red;
+  }
+
   &::placeholder,
   &:active,
   &:focus {
