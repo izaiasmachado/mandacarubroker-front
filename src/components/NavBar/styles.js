@@ -34,7 +34,7 @@ export const LogoTextTitle = styled.span`
 export const LogoTextSubtitle = styled.span`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #00347e;
+  color: #084EB2;
 `;
 
 export const LogoTextContainer = styled.div`
