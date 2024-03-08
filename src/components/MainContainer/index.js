@@ -6,7 +6,6 @@ import Main from "./Main";
 const MainGroup = () => {
   return (
     <S.Main>
-      <SideBar />
         <S.Conteiner>
             <Hero />
             <Main />

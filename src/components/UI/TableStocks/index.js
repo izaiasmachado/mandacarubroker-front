@@ -14,7 +14,7 @@ const Table = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
-          }
+          },
         });
 
         setStockData(response.data);
@@ -31,6 +31,12 @@ const Table = () => {
   };
 
   return (
+    <>
+    <S.Wrapper>
+
+      <h1>Ações</h1>
+      <h3>Abaixo estão listadas as principais ações disponíveis para compra no mercado. Acesse o menu Negociar para realizar a venda</h3>
+    </S.Wrapper>
     <S.Container>
       <S.Table>
         <S.TableRowHeader>
@@ -57,6 +63,7 @@ const Table = () => {
         ))}
       </S.Table>
     </S.Container>
+    </>
   );
 };
 

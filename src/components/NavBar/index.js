@@ -1,7 +1,15 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUser } from "@fortawesome/free-solid-svg-icons";
+"use client";
+import { FaUser } from "react-icons/fa";
+import { useUser } from "@/contexts/UserContext";
+import { IoLogOut } from "react-icons/io5";
 
+import React from "react";
 import * as S from "./styles";
+
+function generateUsername(texto) {
+  return "@" + texto.replace(/\s+/g, "").toLowerCase();
+}
+
 import {
   Nav,
   Container,
@@ -13,20 +21,41 @@ import {
 } from "./styles";
 
 const Navbar = () => {
+  const { userData } = useUser();
+
   return (
     <S.Nav>
       <Container>
         <LogoWrapper>
-          <LogoImg src="./img/b3-icone-white.png" alt="B3 Logo" />
-          <LogoTextContainer>
-            <LogoTextTitle>MANDACARU</LogoTextTitle>
-            <br />
-            <LogoTextSubtitle>BROKER</LogoTextSubtitle>
-          </LogoTextContainer>
+          <LogoImg
+            src="./img/logoMandacaruBroker.png"
+            alt="Mandacaru Broker Logo"
+          />
         </LogoWrapper>
+        <S.ContainerProfile>
+          <S.ContainerUser>
+              <FaUser size={25} color={"#FFF"} />
+          </S.ContainerUser>
+          <S.InformationUser>
+            {userData === null ? (
+              <>
+                <S.Name>Loading...</S.Name>
+                <S.UserName>Loading...</S.UserName>
+              </>
+            ) : (
+              <>
+                <S.Name>Olá,</S.Name>
+                <S.UserName>{generateUsername(userData.username)}</S.UserName>
+              </>
+            )}
+          </S.InformationUser>
+                <IoLogOut size={30} color={"#FFF"}/>
+        </S.ContainerProfile>
       </Container>
     </S.Nav>
   );
 };
+
+// }
 
 export default Navbar;
