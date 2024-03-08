@@ -13,7 +13,7 @@ const Table = ({ sendDataToParent }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
-          }
+          },
         });
 
         setStockData(response.data);
@@ -34,14 +34,14 @@ const Table = ({ sendDataToParent }) => {
     <S.Container>
       <S.Table>
         <S.TableRowHeader>
-          <S.TableHeader width="50px">Selecionar</S.TableHeader>
+          <S.TableHeader align={true}>Selecionar</S.TableHeader>
           <S.TableHeader>Simbolo</S.TableHeader>
           <S.TableHeader>Empresa</S.TableHeader>
           <S.TableHeader>Valor de ação</S.TableHeader>
         </S.TableRowHeader>
         {stockData.map((data, index) => (
           <S.TableRow key={index} flip={index % 2 === 0}>
-            <S.TableCell width="50px">
+            <S.TableCell align={true}>
               <input
                 type="radio"
                 name="selectedStock"

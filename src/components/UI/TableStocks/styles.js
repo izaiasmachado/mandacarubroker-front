@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import styled from "styled-components";
 
@@ -14,26 +14,30 @@ export const Table = styled.table`
 `;
 
 export const TableRow = styled.tr`
-  color: #818181;
+  color: #fff;
+  height: 50px;
+  font-weight: 600;
   padding: 8px;
-  font-size: 1.3rem;
-  background-color: ${(props) => (props.flip ? "#ECECEC" : "#021D3F")};;
+  font-size: 1.6rem;
+  background-color: ${(props) => (props.flip ? "#022A5E" : "#011229")};
 `;
 
 export const TableRowHeader = styled.tr`
   color: #fff;
   padding: 8px;
-  font-size: 1.3rem;
-
+  font-size: 1.8rem;
 `;
 
 export const TableHeader = styled.th`
   padding: 8px;
-  text-align: left;
+  height: 40px;
+  ${(props) => (props.align ? "text-align: center;" : "text-align: left;")}
 `;
 
 export const TableCell = styled.td`
   width: 15rem;
   align-items: center;
+  height: 50px;
   padding: 8px;
+  ${(props) => (props.align ? "text-align: center;" : "text-align: left;")}
 `;
