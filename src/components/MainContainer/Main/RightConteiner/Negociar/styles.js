@@ -10,9 +10,9 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   form {
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     height: 100%;
     justify-content: space-between;
@@ -28,8 +28,8 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #fff;
 `;
 
@@ -71,11 +71,15 @@ export const FormContent = styled.div`
 export const Resumo = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 10px;
-  max-width: 200px;
-  padding: 5px;
+  padding: 8px 0;
+`;
+
+export const Confirm = styled.label`
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: green;
 `;

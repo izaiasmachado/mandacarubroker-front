@@ -3,18 +3,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  align-items: center;
   width: 100%;
   height: 100%;
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     height: 100%;
+    gap: 20px;
     justify-content: space-between;
   }
 `;
@@ -28,8 +28,8 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #fff;
 `;
 
