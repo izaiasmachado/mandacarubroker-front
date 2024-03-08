@@ -17,7 +17,7 @@ export const TableRow = styled.tr`
   height: 50px;
   font-weight: 600;
   padding: 8px;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background-color: ${(props) => (props.flip ? "#022A5E" : "#011229")};
 `;
 
