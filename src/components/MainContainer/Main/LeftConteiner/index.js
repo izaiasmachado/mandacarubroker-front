@@ -4,40 +4,36 @@ import TablePortifolio from "@/components/UI/TablePortifolio";
 import TableStocks from "@/components/UI/TableStocks";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import { useTransactionType } from "@/contexts/TransationTypeContext";
+import { useStock } from "@/contexts/StockContext";
 
 const LeftConteiner = ({sendDataToParent}) => {
-  const [activeTable, setactiveTable] = useState("stocks");
-  const [selectedStockData, setSelectedStockData] = useState(null);
+  const { selectedTransactionType, setSelectedTransactionType } = useTransactionType();
+  const { setSelectedStock } = useStock(); 
 
   const handleButtonClick = (buttonName) => {
-    setactiveTable(buttonName);
-  };
-
-  const handleDataFromChild = (data) => {
-    setSelectedStockData(data);
-    sendDataToParent(data);
+    setSelectedTransactionType(buttonName);
+    setSelectedStock(null);
   };
 
   return (
     <S.LeftConteiner>
       <S.Controls>
-        <Button
-          
+        <Button          
           text="Stocks"
-          clicked={activeTable === "stocks"}
-          onClick={() => handleButtonClick("stocks")}
+          clicked={selectedTransactionType === "buy"}
+          onClick={() => handleButtonClick("buy")}
         />
         <Button
           text="Portifólio"
-          clicked={activeTable === "portifolio"}
-          onClick={() => handleButtonClick("portifolio")}
+          clicked={selectedTransactionType === "sell"}
+          onClick={() => handleButtonClick("sell")}
         />
       </S.Controls>
-      {activeTable === "stocks" &&  <TableStocks sendDataToParent={handleDataFromChild} />}
-      {activeTable === "portifolio" && <TablePortifolio />}     
+      {selectedTransactionType === "buy" &&  <TableStocks />}
+      {selectedTransactionType === "sell" && <TablePortifolio />}     
     </S.LeftConteiner>
   );
-  s;
 };
 
 export default LeftConteiner;
