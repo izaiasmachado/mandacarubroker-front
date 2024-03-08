@@ -4,6 +4,7 @@ import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
 import { useBalance } from "@/contexts/BalanceContext";
+import { useUser } from "@/contexts/UserContext";
 import Balance from "@/components/BalanceGroup";
 
 const Negociar = ({ selectedStockData }) => {
@@ -11,6 +12,7 @@ const Negociar = ({ selectedStockData }) => {
   const [quantity, setQuantity] = useState("");
   const [transactionType, setTransactionType] = useState("compra");
   const { decrementBalance } = useBalance();
+  const { fetchPortfolio } = useUser();
 
   useEffect(() => {
     if (selectedStockData) {
@@ -44,6 +46,8 @@ const Negociar = ({ selectedStockData }) => {
       if (error.response.status === 422) {
         console.error("Você não possui saldo suficiente");
       }
+    } finally {
+      fetchPortfolio();
     }
   };
 
