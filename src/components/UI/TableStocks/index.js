@@ -1,27 +1,16 @@
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import * as S from "./styles";
+import StockRow from "./stock";
 
 const Table = ({ sendDataToParent }) => {
   const [stockData, setStockData] = useState([]);
   const [selectedStock, setSelectedStock] = useState(0);
 
-  const priceToReal = (price) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(price);
-  };
-
   useEffect(() => {
     async function fetchStockData() {
       try {
-        const response = await api.get("/stocks", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("access_token"),
-          },
-        });
+        const response = await api.get("/stocks");
 
         setStockData(response.data);
       } catch (error) {
@@ -32,9 +21,9 @@ const Table = ({ sendDataToParent }) => {
     fetchStockData();
   }, []);
 
-  const handleRadioChange = (id) => {
-    setSelectedStock(id);
-    sendDataToParent(id); // Envia os dados para o componente pai
+  const handleRadioChange = (data) => {
+    setSelectedStock(data);
+    sendDataToParent(data);
   };
 
   return (
@@ -46,25 +35,13 @@ const Table = ({ sendDataToParent }) => {
           <S.TableHeader align>Cotação</S.TableHeader>
         </S.TableRowHeader>
         {stockData.map((data, index) => (
-          <S.TableRow
+          <StockRow
             key={index}
+            selectedStock={selectedStock}
+            data={data}
             flip={index % 2 === 0}
-            onClick={() => handleRadioChange(data)}
-          >
-            <S.TableCell align={true}>
-              <input
-                type="radio"
-                name="selectedStock"
-                value={data.id}
-                checked={selectedStock.id === data.id}
-                onChange={() => handleRadioChange(data)}
-              />
-            </S.TableCell>
-            <S.TableCell>
-              {data.symbol} - {data.companyName}
-            </S.TableCell>
-            <S.TableCell align>{priceToReal(data.price)}</S.TableCell>
-          </S.TableRow>
+            handleRadioChange={handleRadioChange}
+          />
         ))}
       </S.Table>
     </S.Container>

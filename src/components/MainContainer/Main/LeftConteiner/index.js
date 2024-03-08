@@ -5,7 +5,7 @@ import TableStocks from "@/components/UI/TableStocks";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
-const LeftConteiner = ({sendDataToParent}) => {
+const LeftConteiner = ({ sendDataToParent }) => {
   const [activeTable, setactiveTable] = useState("stocks");
   const [selectedStockData, setSelectedStockData] = useState(null);
 
@@ -22,7 +22,6 @@ const LeftConteiner = ({sendDataToParent}) => {
     <S.LeftConteiner>
       <S.Controls>
         <Button
-          
           text="Stocks"
           clicked={activeTable === "stocks"}
           onClick={() => handleButtonClick("stocks")}
@@ -33,11 +32,14 @@ const LeftConteiner = ({sendDataToParent}) => {
           onClick={() => handleButtonClick("portifolio")}
         />
       </S.Controls>
-      {activeTable === "stocks" &&  <TableStocks sendDataToParent={handleDataFromChild} />}
-      {activeTable === "portifolio" && <TablePortifolio />}     
+      {activeTable === "stocks" && (
+        <TableStocks sendDataToParent={handleDataFromChild} />
+      )}
+      {activeTable === "portifolio" && (
+        <TablePortifolio sendDataToParent={handleDataFromChild} />
+      )}
     </S.LeftConteiner>
   );
-  s;
 };
 
 export default LeftConteiner;
