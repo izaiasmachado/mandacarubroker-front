@@ -1,6 +1,7 @@
 "use client";
 import { FaUser } from "react-icons/fa";
 import { useUser } from "@/contexts/UserContext";
+import { IoLogOut } from "react-icons/io5";
 
 import React from "react";
 import * as S from "./styles";
@@ -33,9 +34,7 @@ const Navbar = () => {
         </LogoWrapper>
         <S.ContainerProfile>
           <S.ContainerUser>
-            <S.Icon>
-              <FaUser size={25} color={"orange"} />
-            </S.Icon>
+              <FaUser size={25} color={"#FFF"} />
           </S.ContainerUser>
           <S.InformationUser>
             {userData === null ? (
@@ -50,6 +49,7 @@ const Navbar = () => {
               </>
             )}
           </S.InformationUser>
+                <IoLogOut size={30} color={"#FFF"}/>
         </S.ContainerProfile>
       </Container>
     </S.Nav>

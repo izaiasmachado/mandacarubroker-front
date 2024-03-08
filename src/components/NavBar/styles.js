@@ -50,10 +50,6 @@ export const ContainerProfile = styled.div`
   height: 4rem;
 `;
 
-export const Icon = styled.div`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-`;
 export const ContainerUser = styled.div`
   display: flex;
   align-items: center;
@@ -61,8 +57,7 @@ export const ContainerUser = styled.div`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  border: solid 2px #ff8c1f;
-  background-color: white;
+  background-color: #ff8c1f;
 `;
 
 export const InformationUser = styled.div`
@@ -82,3 +77,6 @@ export const UserName = styled.span`
   color: #FF8C1F;
   font-size: 1.2rem;
 `;
+
+export const IoLogOut = styled.div`
+`
