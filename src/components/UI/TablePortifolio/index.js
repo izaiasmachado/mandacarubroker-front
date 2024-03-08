@@ -1,12 +1,14 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
+import { useStock } from "@/contexts/StockContext";
 
 import * as S from "./styles";
 
 const Table = () => {
   const [stockData, setStockData] = useState([]);
+  const { selectedStock, setSelectedStock } = useStock();
 
   useEffect(() => {
     async function fetchStockData() {
@@ -15,7 +17,7 @@ const Table = () => {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
-          }
+          },
         });
 
         setStockData(response.data);
@@ -27,24 +29,39 @@ const Table = () => {
     fetchStockData();
   }, []);
 
+  const handleRadioChange = (selectedStock) => {
+    setSelectedStock(selectedStock);    
+  };
+
   return (
     <S.Container>
       <S.Table>
-        <S.TableRowHeader>
+        <S.TableRowHeader>          
+          <S.TableHeader>Selecionar</S.TableHeader>
           <S.TableHeader>Simbolo</S.TableHeader>
           <S.TableHeader>Empresa</S.TableHeader>
           <S.TableHeader>Valor de ação</S.TableHeader>
-          <S.TableHeader>Quantidade de ações do usuário</S.TableHeader>
+          <S.TableHeader>Qtd. de ações do usuário</S.TableHeader>
           <S.TableHeader>Posição</S.TableHeader>
-
         </S.TableRowHeader>
         {stockData.length === 0 ? (
           <S.TableRow>
-            <S.TableEmpty colSpan="5">Você não possui ações em seu portifólio.</S.TableEmpty>
+            <S.TableEmpty colSpan="5">
+              Você não possui ações em seu portifólio.
+            </S.TableEmpty>
           </S.TableRow>
         ) : (
           stockData.map((data, index) => (
             <S.TableRow key={index} flip={index % 2 === 0}>
+              <S.TableCell>
+                <input
+                  type="radio"
+                  name="selectedStock"
+                  value={data.stock.id}
+                  checked={selectedStock && selectedStock.id === data.stock.id}
+                  onChange={() => handleRadioChange(data.stock)}
+                />
+              </S.TableCell>
               <S.TableCell>{data.stock.symbol}</S.TableCell>
               <S.TableCell>{data.stock.companyName}</S.TableCell>
               <S.TableCell>{data.stock.price}</S.TableCell>
