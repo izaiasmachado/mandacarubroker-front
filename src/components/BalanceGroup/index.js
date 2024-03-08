@@ -30,7 +30,7 @@ const Balance = () => {
       <S.BalanceRightcontent>
         <FaWallet size={25} color={"#fff"} />
         <S.Currency>
-          <h3>Saldo</h3>
+          <S.Label>Saldo</S.Label>
           <span>{showPassword ? balanceString : <hr></hr>}</span>
         </S.Currency>
         <S.Icon onClick={togglePasswordVisibility}>
