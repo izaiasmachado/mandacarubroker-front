@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import { useStock } from "@/contexts/StockContext";
+import { useTransactionType } from "@/contexts/TransationTypeContext";
 
 const Negociar = ({ selectedStockData }) => {
   const [value, setValue] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("compra");
+  const [quantity, setQuantity] = useState("");  
+  const { selectedTransactionType } = useTransactionType();
+  const [transactionType, setTransactionType] = useState(selectedTransactionType);
+  const { selectedStock } = useStock();
 
   useEffect(() => {
     if (selectedStockData) {
@@ -20,10 +24,6 @@ const Negociar = ({ selectedStockData }) => {
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
-  };
-
-  const handleTransactionTypeChange = (e) => {
-    setTransactionType(e.target.value);
   };
 
   const handleSubmit = async (e) => {

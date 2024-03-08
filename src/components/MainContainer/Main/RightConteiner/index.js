@@ -7,7 +7,7 @@ import Button from "@/components/UI/Button";
 import Negociar from "./Negociar";
 import Carteira from "./Carteira";
 
-const RightConteiner = ({ selectedStockData }) => {
+const RightConteiner = () => {
   const [activeButton, setActiveButton] = useState("carteira");
 
   const handleButtonClick = (buttonName) => {
@@ -29,7 +29,7 @@ const RightConteiner = ({ selectedStockData }) => {
         />
       </S.Controls>
       {activeButton === "negociar" && (
-        <Negociar selectedStockData={selectedStockData} />
+        <Negociar />
       )}
       {activeButton === "carteira" && <Carteira />}
     </S.RightConteiner>
