@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useBalance } from "@/contexts/BalanceContext";
+
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 import Balance from "@/components/BalanceGroup";
@@ -7,6 +9,7 @@ const Carteira = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
   const [transactionType, setTransactionType] = useState("deposito");
+  const { incrementBalance, decrementBalance } = useBalance();
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -22,9 +25,12 @@ const Carteira = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Value:", value);
-    console.log("Quantity:", quantity);
-    console.log("Transaction Type:", transactionType);
+
+    if (transactionType === "deposito") {
+      incrementBalance(parseFloat(value));
+    } else if (transactionType === "saque") {
+      decrementBalance(parseFloat(value));
+    }
   };
 
   return (

@@ -67,3 +67,15 @@ export const FormContent = styled.div`
   flex-direction: column;
   min-width: 160px;
 `;
+
+export const Resumo = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  max-width: 200px;
+  padding: 5px;
+`;
