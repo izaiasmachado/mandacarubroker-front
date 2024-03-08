@@ -29,6 +29,18 @@ const Table = ({ sendDataToParent }) => {
     console.log(data);
   };
 
+  const sortedPortfolio = stockData.sort((a, b) => {
+    if (a.symbol < b.symbol) {
+      return -1;
+    }
+
+    if (a.symbol > b.symbol) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   return (
     <S.Container>
       <S.Table>
@@ -37,7 +49,7 @@ const Table = ({ sendDataToParent }) => {
           <S.TableHeader>Nome do ativo</S.TableHeader>
           <S.TableHeader align>Cotação</S.TableHeader>
         </S.TableRowHeader>
-        {stockData.map((data, index) => (
+        {sortedPortfolio.map((data, index) => (
           <StockRow
             key={data.id}
             selectedStock={selectedStock}
