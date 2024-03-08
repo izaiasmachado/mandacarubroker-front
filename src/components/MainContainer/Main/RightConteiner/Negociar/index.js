@@ -9,20 +9,19 @@ import Balance from "@/components/BalanceGroup";
 import { useStock } from "@/contexts/StockContext";
 import { useTransactionType } from "@/contexts/TransationTypeContext";
 
-const Negociar = ({ selectedStockData }) => {
+const Negociar = () => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");  
   const { selectedTransactionType } = useTransactionType();
-  const [transactionType, setTransactionType] = useState(selectedTransactionType);
   const { selectedStock } = useStock();
   const { decrementBalance } = useBalance();
   const { fetchPortfolio } = useUser();
 
   useEffect(() => {
-    if (selectedStockData) {
-      setValue(selectedStockData.id);
+    if (selectedStock) {
+      setValue(selectedStock.id);
     }
-  }, [selectedStockData]);
+  }, [selectedStock]);
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -40,7 +39,7 @@ const Negociar = ({ selectedStockData }) => {
         shares: quantity,
       });
 
-      const buyValue = quantity * selectedStockData.price;
+      const buyValue = quantity * selectedStock.price;
       decrementBalance(buyValue);
     } catch (error) {
       if (error.response.status === 422) {
@@ -58,13 +57,13 @@ const Negociar = ({ selectedStockData }) => {
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
-            {selectedStockData ? (
+            {selectedStock ? (
               <>
                 <S.InputWrapper>
                   <S.Label>Ação selecionada:</S.Label>
                   <S.Input
                     type="text"
-                    value={selectedStockData.symbol}
+                    value={selectedStock.symbol}
                     onChange={handleValueChange}
                   />
                 </S.InputWrapper>
@@ -83,14 +82,14 @@ const Negociar = ({ selectedStockData }) => {
                     <S.Resumo>
                       <span>
                         Você está comprando{" "}
-                        {(quantity * selectedStockData.price).toLocaleString(
+                        {(quantity * selectedStock.price).toLocaleString(
                           "pt-BR",
                           {
                             style: "currency",
                             currency: "BRL",
                           }
                         )}{" "}
-                        em ações de {selectedStockData.companyName}
+                        em ações de {selectedStock.companyName}
                       </span>
                     </S.Resumo>
                     <S.Confirm>Deseja confirmar essa transação?</S.Confirm>
