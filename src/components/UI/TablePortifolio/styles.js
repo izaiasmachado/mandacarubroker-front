@@ -51,3 +51,18 @@ export const SelectHeader = styled.th`
   width: 120px;
   ${(props) => (props.align ? "text-align: center;" : "text-align: left;")};
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.3rem 0.4rem;
+  margin-bottom: 1rem;
+  h1 {
+    color: #fff;
+  }
+  h3 {
+    color: #fff;
+  }
+`;
