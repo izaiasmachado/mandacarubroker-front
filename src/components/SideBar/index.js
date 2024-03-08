@@ -33,6 +33,7 @@ const SideBar = () => {
 
         const data = await response.json();
         setUserData(data);
+        localStorage.setItem("balance", data.balance || 0);
       } catch (error) {
         console.error(error);
       } finally {

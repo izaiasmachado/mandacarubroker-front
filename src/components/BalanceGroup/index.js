@@ -19,9 +19,6 @@ const Balance = ({ balance }) => {
     setShowPassword(!showPassword);
   };
 
-  console.log("Balance:", balance);
-  console.log(balanceToLocalePtBr(balance));
-
   return (
     <S.Balance>
       <S.BalanceRightcontent>

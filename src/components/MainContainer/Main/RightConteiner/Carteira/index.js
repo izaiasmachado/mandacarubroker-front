@@ -1,4 +1,4 @@
-"use cliente";
+"use client";
 
 import React, { useState } from "react";
 import * as S from "./styles";
@@ -11,7 +11,12 @@ import { api } from "@/lib/api";
 const Carteira = () => {
   const [value, setValue] = useState(1000.0);
   const [transactionType, setTransactionType] = useState("deposit");
-  const [balance, setBalance] = useState(0);
+
+  const initialBalance = localStorage.getItem("balance")
+    ? localStorage.getItem("balance")
+    : 0;
+
+  const [balance, setBalance] = useState(initialBalance);
 
   const handleTransactionTypeChange = (e) => {
     setTransactionType(e.target.value);
@@ -19,8 +24,6 @@ const Carteira = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Value:", value);
-    console.log("Transaction Type:", transactionType);
     const amount = value.toString().replace(",", ".");
 
     try {
@@ -38,21 +41,14 @@ const Carteira = () => {
 
   return (
     <S.Container>
-      <Balance
-        balance={
-          localStorage.getItem("balance") ? localStorage.getItem("balance") : 0
-        }
-      />
+      <Balance balance={balance} />
 
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
             <S.InputWrapper>
               <S.Label>Valor:</S.Label>
-              <InputCurrency
-                value={value}
-                setValue={(value) => setValue(Number(value))}
-              ></InputCurrency>
+              <InputCurrency value={value} setValue={setValue}></InputCurrency>
             </S.InputWrapper>
           </S.InputGroup>
           <S.InputWrapper>

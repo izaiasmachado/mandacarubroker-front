@@ -1,10 +1,10 @@
-"use cliente";
+"use client";
 
 import CurrencyInput from "react-currency-input-field";
 
 export const InputCurrency = ({ value, setValue }) => {
-  const handleValueChange = (value) => {
-    setValue(value);
+  const handleValueChange = (v) => {
+    setValue(v);
   };
 
   return (
@@ -12,7 +12,6 @@ export const InputCurrency = ({ value, setValue }) => {
       <CurrencyInput
         id="input-example"
         name="input-name"
-        placeholder="R$ 0,00"
         defaultValue={"1000,00"}
         decimalsLimit={2}
         prefix="R$ "
