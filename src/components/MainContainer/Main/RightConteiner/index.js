@@ -8,7 +8,7 @@ import Negociar from "./Negociar";
 import Carteira from "./Carteira";
 
 const RightConteiner = () => {
-  const [activeButton, setActiveButton] = useState("carteira");
+  const [activeButton, setActiveButton] = useState("negociar");
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);

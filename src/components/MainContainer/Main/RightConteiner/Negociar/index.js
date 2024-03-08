@@ -35,7 +35,7 @@ const Negociar = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/portfolio/stock/${value}/buy`, {
+      const response = await api.post(`/portfolio/stock/${value}/${selectedTransactionType}`, {
         shares: quantity,
       });
 
@@ -81,7 +81,7 @@ const Negociar = () => {
                   <>
                     <S.Resumo>
                       <span>
-                        Você está comprando{" "}
+                        Você está {selectedTransactionType == "buy" ? "comprando " : "vendendo "}
                         {(quantity * selectedStock.price).toLocaleString(
                           "pt-BR",
                           {
