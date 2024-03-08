@@ -3,10 +3,13 @@ import { api } from "@/lib/api";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
+import { useBalance } from "@/contexts/BalanceContext";
+
 const Negociar = ({ selectedStockData }) => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
   const [transactionType, setTransactionType] = useState("compra");
+  const { decrementBalance } = useBalance();
 
   useEffect(() => {
     if (selectedStockData) {
@@ -28,16 +31,14 @@ const Negociar = ({ selectedStockData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("stock.id", value);
-    console.log("shares:", quantity);
-    console.log("type:", transactionType);
 
     try {
       const response = await api.post(`/portfolio/stock/${value}/buy`, {
         shares: quantity,
       });
-      console.log("Status da requisição:", response.status);
-      console.log(response.data);
+
+      const buyValue = quantity * selectedStockData.price;
+      decrementBalance(buyValue);
     } catch (error) {
       if (error.response.status === 422) {
         console.error("Você não possui saldo suficiente");
