@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { api } from "@/lib/api";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
@@ -25,11 +26,32 @@ const Negociar = ({ selectedStockData }) => {
     setTransactionType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("stock.id", value);
     console.log("shares:", quantity);
     console.log("type:", transactionType);
+
+    try {
+      const response = await api.post(
+        `/portfolio/stock/${value}/buy`,
+        {
+          shares: quantity,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("access_token"),
+          },
+        }
+      );
+      console.log("Status da requisição:", response.status);
+      console.log(response.data);
+    } catch (error) {
+      if (error.response.status === 422) {
+        console.error("Você não possui saldo suficiente");
+      }
+    }
   };
 
   return (
@@ -86,7 +108,7 @@ const Negociar = ({ selectedStockData }) => {
           </S.InputGroup>
         </S.FormContent>
         <Button
-          disabled = {quantity == 0}
+          disabled={quantity == 0}
           text="Confirmar"
           width={"100%"}
           height={"30px"}
