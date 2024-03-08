@@ -13,7 +13,7 @@ const Table = ({ sendDataToParent }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
-          }
+          },
         });
 
         setStockData(response.data);
@@ -31,32 +31,41 @@ const Table = ({ sendDataToParent }) => {
   };
 
   return (
-    <S.Container>
-      <S.Table>
-        <S.TableRowHeader>
-          <S.TableHeader width="50px">Selecionar</S.TableHeader>
-          <S.TableHeader>Simbolo</S.TableHeader>
-          <S.TableHeader>Empresa</S.TableHeader>
-          <S.TableHeader>Valor de ação</S.TableHeader>
-        </S.TableRowHeader>
-        {stockData.map((data, index) => (
-          <S.TableRow key={index} flip={index % 2 === 0}>
-            <S.TableCell width="50px">
-              <input
-                type="radio"
-                name="selectedStock"
-                value={data.id}
-                checked={selectedStock.id === data.id}
-                onChange={() => handleRadioChange(data)}
-              />
-            </S.TableCell>
-            <S.TableCell>{data.symbol}</S.TableCell>
-            <S.TableCell>{data.companyName}</S.TableCell>
-            <S.TableCell>{data.price}</S.TableCell>
-          </S.TableRow>
-        ))}
-      </S.Table>
-    </S.Container>
+    <>
+    <S.Wrapper>
+
+      <h1>Ações</h1>
+      <h3>Abaixo estão listadas as principais ações disponíveis para compra no mercado. Acesse o menu Negociar para realizar a venda</h3>
+    </S.Wrapper>
+      <S.Container>
+        <S.Table>
+          <S.TableRowHeader>
+            <S.TableHeader width="50px">Selecionar</S.TableHeader>
+            <S.TableHeader>Simbolo</S.TableHeader>
+            <S.TableHeader>Empresa</S.TableHeader>
+            <S.TableHeader>Valor de ação</S.TableHeader>
+          </S.TableRowHeader>
+          {stockData.map((data, index) => (
+            <S.TableRow key={index} flip={index % 2 === 0}>
+              <S.TableCell width="50px">
+                <input
+                  type="radio"
+                  name="selectedStock"
+                  value={data.id}
+                  checked={selectedStock.id === data.id}
+                  onChange={() => handleRadioChange(data)}
+                  />
+              </S.TableCell>
+              <S.TableCell>{data.symbol}</S.TableCell>
+              <S.TableCell>{data.companyName}</S.TableCell>
+              <S.TableCell>{data.price}</S.TableCell>
+            </S.TableRow>
+          ))}
+        </S.Table>
+      </S.Container>
+
+    </>
+
   );
 };
 
