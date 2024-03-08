@@ -1,11 +1,22 @@
-'use client'
+"use client";
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback } from "react";
 
 const BalanceContext = createContext();
 
 export const BalanceProvider = ({ children }) => {
-  const [balance, setBalance] = useState(288);
+  const getInitialBalance = () => {
+    if (typeof window === "undefined") return 0;
+    const balance = localStorage.getItem("balance");
+    return balance ? parseFloat(balance) : 0;
+  };
+
+  const [balance, setBalance] = useState(getInitialBalance());
+
+  const saveBalance = useCallback((amount) => {
+    setBalance(amount);
+    localStorage.setItem("balance", amount);
+  }, []);
 
   const incrementBalance = (amount) => {
     setBalance(balance + amount);
@@ -16,7 +27,9 @@ export const BalanceProvider = ({ children }) => {
   };
 
   return (
-    <BalanceContext.Provider value={{ balance, incrementBalance, decrementBalance }}>
+    <BalanceContext.Provider
+      value={{ balance, incrementBalance, decrementBalance, saveBalance }}
+    >
       {children}
     </BalanceContext.Provider>
   );
