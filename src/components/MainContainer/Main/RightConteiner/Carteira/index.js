@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useBalance } from "@/contexts/BalanceContext";
+
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 import Balance from "@/components/BalanceGroup";
@@ -11,12 +13,7 @@ import { api } from "@/lib/api";
 const Carteira = () => {
   const [value, setValue] = useState(1000.0);
   const [transactionType, setTransactionType] = useState("deposit");
-
-  const initialBalance = localStorage.getItem("balance")
-    ? localStorage.getItem("balance")
-    : 0;
-
-  const [balance, setBalance] = useState(initialBalance);
+  const { balance, saveBalance } = useBalance();
 
   const handleTransactionTypeChange = (e) => {
     setTransactionType(e.target.value);
@@ -32,10 +29,9 @@ const Carteira = () => {
       );
 
       const data = response.data;
-      setBalance(data.balance);
-      localStorage.setItem("balance", data.balance);
+      saveBalance(data.balance);
     } catch (error) {
-      alert("Fundos insuficientes para realizar essa operação");
+      console.error(error);
     }
   };
 

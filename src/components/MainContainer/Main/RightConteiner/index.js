@@ -8,7 +8,7 @@ import Negociar from "./Negociar";
 import Historico from "./Historico";
 import Carteira from "./Carteira";
 
-const RightConteiner = () => {
+const RightConteiner = ({ selectedStockData }) => {
   const [activeButton, setActiveButton] = useState("negociar");
 
   const handleButtonClick = (buttonName) => {
@@ -29,7 +29,7 @@ const RightConteiner = () => {
           onClick={() => handleButtonClick("carteira")}
         />
       </S.Controls>
-      {activeButton === "negociar" && <Negociar />}
+      {activeButton === "negociar" && <Negociar selectedStockData={selectedStockData} />}
       {activeButton === "carteira" && <Carteira />}
     </S.RightConteiner>
   );

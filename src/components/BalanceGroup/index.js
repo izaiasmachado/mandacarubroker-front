@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useBalance } from "@/contexts/BalanceContext";
 
 import { FaWallet, FaEye, FaEyeSlash } from "react-icons/fa6";
 import * as S from "./styles";
 
-const Balance = ({ balance }) => {
-  const [showPassword, setShowPassword] = useState(true);
+const Balance = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const { balance } = useBalance();
 
-  const balanceToLocalePtBr = (balance) => {
-    return Number(balance).toLocaleString("pt-BR", {
+  const balanceToLocalePtBr = (b) => {
+    return Number(b).toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });

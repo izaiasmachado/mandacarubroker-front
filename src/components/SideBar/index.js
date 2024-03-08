@@ -1,47 +1,16 @@
 "use client";
+import { FaUser } from "react-icons/fa";
+import { useUser } from "@/contexts/UserContext";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as S from "./styles";
-import { FaUser } from "react-icons/fa6";
 
 function generateUsername(texto) {
   return "@" + texto.replace(/\s+/g, "").toLowerCase();
 }
 
 const SideBar = () => {
-  const [userData, setUserData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(
-          "https://api.mandacarubroker.com.br/profile/me",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: localStorage.getItem("access_token"),
-            },
-          }
-        );
-
-        if (!response.ok) {
-          window.location.href = "/";
-          localStorage.removeItem("access_token");
-        }
-
-        const data = await response.json();
-        setUserData(data);
-        localStorage.setItem("balance", data.balance || 0);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+  const { userData } = useUser();
 
   return (
     <S.SideBar>
@@ -52,7 +21,7 @@ const SideBar = () => {
           </S.Icon>
         </S.ContainerUser>
         <S.InformationUser>
-          {isLoading ? (
+          {userData === null ? (
             <>
               <S.Name>Loading...</S.Name>
               <S.UserName>Loading...</S.UserName>
