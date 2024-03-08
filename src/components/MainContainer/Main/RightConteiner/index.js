@@ -18,14 +18,14 @@ const RightConteiner = ({ selectedStockData }) => {
     <S.RightConteiner>
       <S.Controls>
         <Button
-          text="Negociar"
-          clicked={activeButton === "negociar"}
-          onClick={() => handleButtonClick("negociar")}
-        />
-        <Button
           text="Carteira"
           clicked={activeButton === "carteira"}
           onClick={() => handleButtonClick("carteira")}
+        />
+        <Button
+          text="Negociar"
+          clicked={activeButton === "negociar"}
+          onClick={() => handleButtonClick("negociar")}
         />
       </S.Controls>
       {activeButton === "negociar" && (
