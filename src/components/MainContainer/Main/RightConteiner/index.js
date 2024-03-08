@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 
@@ -18,8 +18,16 @@ const RightConteiner = () => {
   return (
     <S.RightConteiner>
       <S.Controls>
-        <Button text="Negociar" clicked={activeButton === "negociar"} onClick={() => handleButtonClick("negociar")}/>
-        <Button text="Carteira" clicked={activeButton === "carteira"} onClick={() => handleButtonClick("carteira")}/>
+        <Button
+          text="Negociar"
+          clicked={activeButton === "negociar"}
+          onClick={() => handleButtonClick("negociar")}
+        />
+        <Button
+          text="Carteira"
+          clicked={activeButton === "carteira"}
+          onClick={() => handleButtonClick("carteira")}
+        />
       </S.Controls>
       {activeButton === "negociar" && <Negociar />}
       {activeButton === "carteira" && <Carteira />}

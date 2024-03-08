@@ -5,12 +5,22 @@ import { useState } from "react";
 import { FaWallet, FaEye, FaEyeSlash } from "react-icons/fa6";
 import * as S from "./styles";
 
-const Balance = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const Balance = ({ balance }) => {
+  const [showPassword, setShowPassword] = useState(true);
+
+  const balanceToLocalePtBr = (balance) => {
+    return Number(balance).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  console.log("Balance:", balance);
+  console.log(balanceToLocalePtBr(balance));
 
   return (
     <S.Balance>
@@ -18,13 +28,18 @@ const Balance = () => {
         <FaWallet size={25} color={"#fff"} />
         <S.Currency>
           <h3>Saldo</h3>
-          <span>{showPassword ? "R$ 0,00" : <hr></hr>}</span>
+          <span>{showPassword ? balanceToLocalePtBr(balance) : <hr></hr>}</span>
         </S.Currency>
         <S.Icon onClick={togglePasswordVisibility}>
-          {showPassword
-            ?  <FaEye size={15} color={"#fff"} />
-            :  <FaEyeSlash size={15} color={"#fff"} style={{ cursor: "pointer" }}/>
-          }
+          {showPassword ? (
+            <FaEye size={15} color={"#fff"} />
+          ) : (
+            <FaEyeSlash
+              size={15}
+              color={"#fff"}
+              style={{ cursor: "pointer" }}
+            />
+          )}
         </S.Icon>
       </S.BalanceRightcontent>
     </S.Balance>
