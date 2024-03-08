@@ -78,5 +78,6 @@ export const UserName = styled.span`
   font-size: 1.2rem;
 `;
 
-export const IoLogOut = styled.div`
+export const iconLogout = styled.div`
+cursor: pointer;
 `
