@@ -9,7 +9,7 @@ const Negociar = ({ selectedStockData }) => {
 
   useEffect(() => {
     if (selectedStockData) {
-      setValue(selectedStockData.value);
+      setValue(selectedStockData.id);
     }
   }, [selectedStockData]);
 
@@ -27,9 +27,9 @@ const Negociar = ({ selectedStockData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Value:", value);
-    console.log("Quantity:", quantity);
-    console.log("Transaction Type:", transactionType);
+    console.log("stock.id", value);
+    console.log("shares:", quantity);
+    console.log("type:", transactionType);
   };
 
   return (
@@ -53,6 +53,7 @@ const Negociar = ({ selectedStockData }) => {
                     placeholder="0"
                     value={quantity}
                     type="number"
+                    min={0}
                     onChange={handleQuantityChange}
                   />
                 </S.InputWrapper>
@@ -85,6 +86,7 @@ const Negociar = ({ selectedStockData }) => {
           </S.InputGroup>
         </S.FormContent>
         <Button
+          disabled = {quantity == 0}
           text="Confirmar"
           width={"100%"}
           height={"30px"}
