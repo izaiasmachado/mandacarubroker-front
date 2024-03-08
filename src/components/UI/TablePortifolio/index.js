@@ -45,11 +45,11 @@ const Table = () => {
         ) : (
           stockData.map((data, index) => (
             <S.TableRow key={index} flip={index % 2 === 0}>
-              <S.TableCell>{data.symbol}</S.TableCell>
-              <S.TableCell>{data.companyName}</S.TableCell>
-              <S.TableCell>{data.price}</S.TableCell>
-              <S.TableCell>{data.qtdStocksUser}</S.TableCell>
-              <S.TableCell>{data.position}</S.TableCell>
+              <S.TableCell>{data.stock.symbol}</S.TableCell>
+              <S.TableCell>{data.stock.companyName}</S.TableCell>
+              <S.TableCell>{data.stock.price}</S.TableCell>
+              <S.TableCell>{data.totalShares}</S.TableCell>
+              <S.TableCell>{data.positionValue}</S.TableCell>
             </S.TableRow>
           ))
         )}
