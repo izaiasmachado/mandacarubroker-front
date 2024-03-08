@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useBalance } from "@/contexts/BalanceContext";
 
 import { FaWallet, FaEye, FaEyeSlash } from "react-icons/fa6";
 import * as S from "./styles";
 
 const Balance = () => {
+  const { balance } = useBalance();
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -18,13 +20,27 @@ const Balance = () => {
         <FaWallet size={25} color={"#fff"} />
         <S.Currency>
           <h3>Saldo</h3>
-          <span>{showPassword ? "R$ 0,00" : <hr></hr>}</span>
+          <span>
+            {showPassword ? (
+              balance.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })
+            ) : (
+              <hr></hr>
+            )}
+          </span>
         </S.Currency>
         <S.Icon onClick={togglePasswordVisibility}>
-          {showPassword
-            ?  <FaEye size={15} color={"#fff"} />
-            :  <FaEyeSlash size={15} color={"#fff"} style={{ cursor: "pointer" }}/>
-          }
+          {showPassword ? (
+            <FaEye size={15} color={"#fff"} />
+          ) : (
+            <FaEyeSlash
+              size={15}
+              color={"#fff"}
+              style={{ cursor: "pointer" }}
+            />
+          )}
         </S.Icon>
       </S.BalanceRightcontent>
     </S.Balance>

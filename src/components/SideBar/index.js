@@ -1,9 +1,7 @@
-'use client'
-
-import { api } from "@/lib/api";
-import React, { useEffect, useState } from "react";
-import { FaUser } from "react-icons/fa6";
-
+// SideBar.js
+import React from "react";
+import { FaUser } from "react-icons/fa";
+import { useUser } from "@/contexts/UserContext";
 import * as S from "./styles";
 
 function generateUsername(texto) {
@@ -11,26 +9,7 @@ function generateUsername(texto) {
 }
 
 const SideBar = () => {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await api.get("/profile/me", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("access_token"),
-          }
-        });
-
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Erro ao fazer a requisição:", error);
-      }
-    }
-    
-    fetchData();
-  }, []);
+  const { userData } = useUser();
 
   return (
     <S.SideBar>
