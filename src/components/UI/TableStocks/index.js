@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import * as S from "./styles";
 import StockRow from "./stock";
+import { useStock } from "@/contexts/StockContext";
 
-const Table = ({ sendDataToParent }) => {
+const Table = () => {
   const [stockData, setStockData] = useState([]);
-  const [selectedStock, setSelectedStock] = useState(0);
+  const { selectedStock, setSelectedStock } = useStock();
 
   useEffect(() => {
     async function fetchStockData() {
@@ -23,10 +24,15 @@ const Table = ({ sendDataToParent }) => {
 
   const handleRadioChange = (data) => {
     setSelectedStock(data);
-    sendDataToParent(data);
   };
 
   return (
+    <>
+    <S.Wrapper>
+
+      <h1>Ações</h1>
+      <h3>Abaixo estão listadas as principais ações disponíveis para compra no mercado. Acesse o menu Negociar para realizar a venda</h3>
+    </S.Wrapper>
     <S.Container>
       <S.Table>
         <S.TableRowHeader>
@@ -45,6 +51,7 @@ const Table = ({ sendDataToParent }) => {
         ))}
       </S.Table>
     </S.Container>
+    </>
   );
 };
 

@@ -4,40 +4,34 @@ import TablePortifolio from "@/components/UI/TablePortifolio";
 import TableStocks from "@/components/UI/TableStocks";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import { useTransactionType } from "@/contexts/TransationTypeContext";
+import { useStock } from "@/contexts/StockContext";
 
-const LeftConteiner = ({ sendDataToParent }) => {
-  const [activeTable, setactiveTable] = useState("stocks");
-  const [selectedStockData, setSelectedStockData] = useState(null);
+const LeftConteiner = ({sendDataToParent}) => {
+  const { selectedTransactionType, setSelectedTransactionType } = useTransactionType();
+  const { setSelectedStock } = useStock(); 
 
   const handleButtonClick = (buttonName) => {
-    setactiveTable(buttonName);
-  };
-
-  const handleDataFromChild = (data) => {
-    setSelectedStockData(data);
-    sendDataToParent(data);
+    setSelectedTransactionType(buttonName);
+    setSelectedStock(null);
   };
 
   return (
     <S.LeftConteiner>
       <S.Controls>
-        <Button
-          text="Ativos Listados"
-          clicked={activeTable === "stocks"}
-          onClick={() => handleButtonClick("stocks")}
+        <Button          
+          text="Ativos disponíveis"
+          clicked={selectedTransactionType === "buy"}
+          onClick={() => handleButtonClick("buy")}
         />
         <Button
           text="Portifólio de Ativos"
-          clicked={activeTable === "portifolio"}
-          onClick={() => handleButtonClick("portifolio")}
+          clicked={selectedTransactionType === "sell"}
+          onClick={() => handleButtonClick("sell")}
         />
       </S.Controls>
-      {activeTable === "stocks" && (
-        <TableStocks sendDataToParent={handleDataFromChild} />
-      )}
-      {activeTable === "portifolio" && (
-        <TablePortifolio sendDataToParent={handleDataFromChild} />
-      )}
+      {selectedTransactionType === "buy" &&  <TableStocks />}
+      {selectedTransactionType === "sell" && <TablePortifolio />}     
     </S.LeftConteiner>
   );
 };
