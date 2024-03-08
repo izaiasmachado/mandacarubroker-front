@@ -10,6 +10,5 @@ export const Main = styled.div`
   height: 70%;
   border-radius: 5px;
   padding: 25px;
-
   min-height: 600px;
 `;
