@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { api } from "@/lib/api";
 
 const UserContext = createContext();
@@ -9,6 +15,7 @@ import { useBalance } from "@/contexts/BalanceContext";
 export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [portfolio, setPortfolio] = useState([]);
   const { saveBalance } = useBalance();
 
   useEffect(() => {
@@ -29,8 +36,19 @@ export const UserProvider = ({ children }) => {
     fetchUserData();
   }, [saveBalance]);
 
+  const fetchPortfolio = useCallback(async () => {
+    try {
+      const response = await api.get("/portfolio");
+      setPortfolio(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar portfolio:", error);
+    }
+  });
+
   return (
-    <UserContext.Provider value={{ userData, setUserData, isLoading }}>
+    <UserContext.Provider
+      value={{ userData, isLoading, portfolio, setUserData, fetchPortfolio }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -22,12 +22,12 @@ const LeftConteiner = ({ sendDataToParent }) => {
     <S.LeftConteiner>
       <S.Controls>
         <Button
-          text="Stocks"
+          text="Ativos Listados"
           clicked={activeTable === "stocks"}
           onClick={() => handleButtonClick("stocks")}
         />
         <Button
-          text="Portifólio"
+          text="Portifólio de Ativos"
           clicked={activeTable === "portifolio"}
           onClick={() => handleButtonClick("portifolio")}
         />

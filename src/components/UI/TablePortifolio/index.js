@@ -1,28 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { api } from "@/lib/api";
+import { useUser } from "@/contexts/UserContext";
 
 import * as S from "./styles";
 import StockRow from "./stock";
 
 const Table = ({ sendDataToParent }) => {
-  const [stockData, setStockData] = useState([]);
   const [selectedStock, setSelectedStock] = useState(0);
+  const { portfolio, fetchPortfolio } = useUser();
 
   useEffect(() => {
-    async function fetchStockData() {
-      try {
-        const response = await api.get("/portfolio");
-
-        setStockData(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar dados das ações:", error);
-      }
-    }
-
-    fetchStockData();
-  }, []);
+    fetchPortfolio();
+  }, [fetchPortfolio]);
 
   const handleRadioChange = (data) => {
     setSelectedStock(data);
@@ -40,14 +30,14 @@ const Table = ({ sendDataToParent }) => {
           <S.TableHeader align>Ações</S.TableHeader>
           <S.TableHeader>Posição (R$)</S.TableHeader>
         </S.TableRowHeader>
-        {stockData.length === 0 ? (
+        {portfolio.length === 0 ? (
           <S.TableRow>
             <S.TableEmpty colSpan="5">
               Você não possui ações em seu portifólio.
             </S.TableEmpty>
           </S.TableRow>
         ) : (
-          stockData.map((data, index) => (
+          portfolio.map((data, index) => (
             <StockRow
               key={index}
               selectedStock={selectedStock}

@@ -48,7 +48,7 @@ const Carteira = () => {
 
   return (
     <S.Container>
-      <Balance balance={balance} />
+      <Balance />
 
       <form onSubmit={handleSubmit}>
         <S.FormContent>

@@ -18,13 +18,19 @@ export const BalanceProvider = ({ children }) => {
     localStorage.setItem("balance", amount);
   }, []);
 
-  const incrementBalance = (amount) => {
-    setBalance(balance + amount);
-  };
+  const incrementBalance = useCallback(
+    (amount) => {
+      setBalance(balance + amount);
+    },
+    [balance]
+  );
 
-  const decrementBalance = (amount) => {
-    setBalance(balance - amount);
-  };
+  const decrementBalance = useCallback(
+    (amount) => {
+      setBalance(balance - amount);
+    },
+    [balance]
+  );
 
   return (
     <BalanceContext.Provider
