@@ -3,9 +3,11 @@ import { api } from "@/lib/api";
 import * as S from "./styles";
 import StockRow from "./stock";
 
+import { useUser } from "@/contexts/UserContext";
+
 const Table = ({ sendDataToParent }) => {
   const [stockData, setStockData] = useState([]);
-  const [selectedStock, setSelectedStock] = useState(0);
+  const { selectedStock, setSelectedStock } = useUser();
 
   useEffect(() => {
     async function fetchStockData() {
@@ -24,6 +26,7 @@ const Table = ({ sendDataToParent }) => {
   const handleRadioChange = (data) => {
     setSelectedStock(data);
     sendDataToParent(data);
+    console.log(data);
   };
 
   return (
@@ -36,7 +39,7 @@ const Table = ({ sendDataToParent }) => {
         </S.TableRowHeader>
         {stockData.map((data, index) => (
           <StockRow
-            key={index}
+            key={data.id}
             selectedStock={selectedStock}
             data={data}
             flip={index % 2 === 0}

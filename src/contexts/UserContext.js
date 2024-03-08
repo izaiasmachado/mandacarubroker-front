@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [portfolio, setPortfolio] = useState([]);
   const { saveBalance } = useBalance();
+  const [selectedStock, setSelectedStock] = useState(null);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -47,7 +48,15 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ userData, isLoading, portfolio, setUserData, fetchPortfolio }}
+      value={{
+        userData,
+        isLoading,
+        portfolio,
+        setUserData,
+        fetchPortfolio,
+        selectedStock,
+        setSelectedStock,
+      }}
     >
       {children}
     </UserContext.Provider>

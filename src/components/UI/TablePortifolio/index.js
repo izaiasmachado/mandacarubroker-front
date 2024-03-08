@@ -7,8 +7,8 @@ import * as S from "./styles";
 import StockRow from "./stock";
 
 const Table = ({ sendDataToParent }) => {
-  const [selectedStock, setSelectedStock] = useState(0);
-  const { portfolio, fetchPortfolio } = useUser();
+  const { portfolio, fetchPortfolio, selectedStock, setSelectedStock } =
+    useUser();
 
   useEffect(() => {
     fetchPortfolio();
@@ -17,6 +17,7 @@ const Table = ({ sendDataToParent }) => {
   const handleRadioChange = (data) => {
     setSelectedStock(data);
     sendDataToParent(data); // Envia os dados para o componente pai
+    console.log(data);
   };
 
   return (
@@ -39,7 +40,7 @@ const Table = ({ sendDataToParent }) => {
         ) : (
           portfolio.map((data, index) => (
             <StockRow
-              key={index}
+              key={data.id}
               selectedStock={selectedStock}
               data={data.stock}
               handleRadioChange={handleRadioChange}
