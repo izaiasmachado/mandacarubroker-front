@@ -6,6 +6,13 @@ const Table = ({ sendDataToParent }) => {
   const [stockData, setStockData] = useState([]);
   const [selectedStock, setSelectedStock] = useState(0);
 
+  const priceToReal = (price) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(price);
+  };
+
   useEffect(() => {
     async function fetchStockData() {
       try {
@@ -34,10 +41,9 @@ const Table = ({ sendDataToParent }) => {
     <S.Container>
       <S.Table>
         <S.TableRowHeader>
-          <S.TableHeader align={true}>Selecionar</S.TableHeader>
-          <S.TableHeader>Simbolo</S.TableHeader>
-          <S.TableHeader>Empresa</S.TableHeader>
-          <S.TableHeader>Valor de ação</S.TableHeader>
+          <S.SelectHeader align={true}>Selecionar</S.SelectHeader>
+          <S.TableHeader>Nome do ativo</S.TableHeader>
+          <S.TableHeader align>Cotação</S.TableHeader>
         </S.TableRowHeader>
         {stockData.map((data, index) => (
           <S.TableRow key={index} flip={index % 2 === 0}>
@@ -50,9 +56,10 @@ const Table = ({ sendDataToParent }) => {
                 onChange={() => handleRadioChange(data)}
               />
             </S.TableCell>
-            <S.TableCell>{data.symbol}</S.TableCell>
-            <S.TableCell>{data.companyName}</S.TableCell>
-            <S.TableCell>{data.price}</S.TableCell>
+            <S.TableCell>
+              {data.symbol} - {data.companyName}
+            </S.TableCell>
+            <S.TableCell align>{priceToReal(data.price)}</S.TableCell>
           </S.TableRow>
         ))}
       </S.Table>

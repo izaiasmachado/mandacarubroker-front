@@ -31,13 +31,18 @@ export const TableRowHeader = styled.tr`
 export const TableHeader = styled.th`
   padding: 8px;
   height: 40px;
-  ${(props) => (props.align ? "text-align: center;" : "text-align: left;")}
+  ${(props) => (props.align ? "text-align: center;" : "text-align: left;")};
 `;
 
 export const TableCell = styled.td`
-  width: 15rem;
   align-items: center;
   height: 50px;
   padding: 8px;
   ${(props) => (props.align ? "text-align: center;" : "text-align: left;")}
+`;
+
+export const SelectHeader = styled.th`
+  height: 40px;
+  width: 120px;
+  ${(props) => (props.align ? "text-align: center;" : "text-align: left;")};
 `;
