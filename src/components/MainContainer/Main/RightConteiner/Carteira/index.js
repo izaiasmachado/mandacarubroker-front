@@ -19,9 +19,15 @@ const Carteira = () => {
     setTransactionType(e.target.value);
   };
 
+  const amountToNumber = (amount) => {
+    if (!amount) return 0;
+    if (typeof amount === "number") return amount;
+    return parseFloat(amount.replace(",", "."));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const amount = value.toString().replace(",", ".");
+    const amount = amountToNumber(value);
 
     try {
       const response = await api.get(
@@ -34,6 +40,11 @@ const Carteira = () => {
       console.error(error);
     }
   };
+
+  const amountNumber = amountToNumber(value);
+  const isButtonDisabled =
+    amountNumber <= 0 ||
+    (transactionType === "withdraw" && amountNumber > balance);
 
   return (
     <S.Container>
@@ -74,6 +85,7 @@ const Carteira = () => {
           </S.InputWrapper>
         </S.FormContent>
         <Button
+          disabled={isButtonDisabled}
           text="Confirmar"
           width={"100%"}
           height={"30px"}
