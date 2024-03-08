@@ -26,8 +26,8 @@ export default function StockRow({
         <input
           type="radio"
           name="selectedStock"
-          value={data.id}
-          checked={selectedStock.id === data.id}
+          value={data.id || data.stock.id}
+          checked={selectedStock&& selectedStock.id === data.id}
         />
       </S.TableCell>
       <S.TableCell>

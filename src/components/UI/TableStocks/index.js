@@ -24,7 +24,6 @@ const Table = () => {
 
   const handleRadioChange = (data) => {
     setSelectedStock(data);
-    sendDataToParent(data);
   };
 
   return (
