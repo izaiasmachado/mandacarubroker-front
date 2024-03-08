@@ -46,7 +46,11 @@ const Table = ({ sendDataToParent }) => {
           <S.TableHeader align>Cotação</S.TableHeader>
         </S.TableRowHeader>
         {stockData.map((data, index) => (
-          <S.TableRow key={index} flip={index % 2 === 0}>
+          <S.TableRow
+            key={index}
+            flip={index % 2 === 0}
+            onClick={() => handleRadioChange(data)}
+          >
             <S.TableCell align={true}>
               <input
                 type="radio"
