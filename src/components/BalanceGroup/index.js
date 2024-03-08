@@ -9,6 +9,14 @@ import * as S from "./styles";
 const Balance = () => {
   const { balance } = useBalance();
   const [showPassword, setShowPassword] = useState(false);
+  const { balance } = useBalance();
+
+  const balanceToLocalePtBr = (b) => {
+    return Number(b).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -20,16 +28,7 @@ const Balance = () => {
         <FaWallet size={25} color={"#fff"} />
         <S.Currency>
           <h3>Saldo</h3>
-          <span>
-            {showPassword ? (
-              balance.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })
-            ) : (
-              <hr></hr>
-            )}
-          </span>
+          <span>{showPassword ? balanceToLocalePtBr(balance) : <hr></hr>}</span>
         </S.Currency>
         <S.Icon onClick={togglePasswordVisibility}>
           {showPassword ? (

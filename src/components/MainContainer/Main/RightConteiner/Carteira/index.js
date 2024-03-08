@@ -1,52 +1,50 @@
+"use client";
+
 import React, { useState } from "react";
 import { useBalance } from "@/contexts/BalanceContext";
 
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
 import Balance from "@/components/BalanceGroup";
+import { InputCurrency } from "@/components/UI/Input";
+
+import { api } from "@/lib/api";
 
 const Carteira = () => {
-  const [value, setValue] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("deposito");
-  const { incrementBalance, decrementBalance } = useBalance();
-
-  const handleValueChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-  };
+  const [value, setValue] = useState(1000.0);
+  const [transactionType, setTransactionType] = useState("deposit");
+  const { balance, saveBalance } = useBalance();
 
   const handleTransactionTypeChange = (e) => {
     setTransactionType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const amount = value.toString().replace(",", ".");
 
-    if (transactionType === "deposito") {
-      incrementBalance(parseFloat(value));
-    } else if (transactionType === "saque") {
-      decrementBalance(parseFloat(value));
+    try {
+      const response = await api.get(
+        `/account/${transactionType}?amount=${amount}`
+      );
+
+      const data = response.data;
+      saveBalance(data.balance);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
     <S.Container>
-      <Balance />
+      <Balance balance={balance} />
+
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
             <S.InputWrapper>
               <S.Label>Valor:</S.Label>
-              <S.Input
-                placeholder="R$: 0,00"
-                type="text"
-                value={value}
-                onChange={handleValueChange}
-              />
+              <InputCurrency value={value} setValue={setValue}></InputCurrency>
             </S.InputWrapper>
           </S.InputGroup>
           <S.InputWrapper>
@@ -56,8 +54,8 @@ const Carteira = () => {
                 <S.RadioButton
                   type="radio"
                   name="transactionType"
-                  value="deposito"
-                  checked={transactionType === "deposito"}
+                  value="deposit"
+                  checked={transactionType === "deposit"}
                   onChange={handleTransactionTypeChange}
                 />
                 <S.Label>Depósito</S.Label>
@@ -66,8 +64,8 @@ const Carteira = () => {
                 <S.RadioButton
                   type="radio"
                   name="transactionType"
-                  value="saque"
-                  checked={transactionType === "saque"}
+                  value="withdraw"
+                  checked={transactionType === "withdraw"}
                   onChange={handleTransactionTypeChange}
                 />
                 <S.Label>Saque</S.Label>
@@ -75,7 +73,12 @@ const Carteira = () => {
             </S.RadioWrapper>
           </S.InputWrapper>
         </S.FormContent>
-        <Button text="Confirmar" width={"100%"} height={"30px"} clicked={false} />
+        <Button
+          text="Confirmar"
+          width={"100%"}
+          height={"30px"}
+          handleClick={handleSubmit}
+        />
       </form>
     </S.Container>
   );

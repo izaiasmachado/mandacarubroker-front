@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { createContext, useContext, useState, useEffect } from 'react';
-import { api } from '@/lib/api';
+import { createContext, useContext, useState, useEffect } from "react";
+import { api } from "@/lib/api";
 
 const UserContext = createContext();
 
@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: localStorage.getItem("access_token"),
-          }
+          },
         });
 
         setUserData(response.data);
