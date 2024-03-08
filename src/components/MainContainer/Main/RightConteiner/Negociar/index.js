@@ -4,6 +4,7 @@ import * as S from "./styles";
 import Button from "@/components/UI/Button";
 
 import { useBalance } from "@/contexts/BalanceContext";
+import Balance from "@/components/BalanceGroup";
 
 const Negociar = ({ selectedStockData }) => {
   const [value, setValue] = useState("");
@@ -48,6 +49,8 @@ const Negociar = ({ selectedStockData }) => {
 
   return (
     <S.Container>
+      <Balance />
+
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
