@@ -33,18 +33,9 @@ const Negociar = ({ selectedStockData }) => {
     console.log("type:", transactionType);
 
     try {
-      const response = await api.post(
-        `/portfolio/stock/${value}/buy`,
-        {
-          shares: quantity,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("access_token"),
-          },
-        }
-      );
+      const response = await api.post(`/portfolio/stock/${value}/buy`, {
+        shares: quantity,
+      });
       console.log("Status da requisição:", response.status);
       console.log(response.data);
     } catch (error) {
@@ -62,7 +53,7 @@ const Negociar = ({ selectedStockData }) => {
             {selectedStockData ? (
               <>
                 <S.InputWrapper>
-                  <S.Label>Stock selecionada:</S.Label>
+                  <S.Label>Ação selecionada:</S.Label>
                   <S.Input
                     type="text"
                     value={selectedStockData.symbol}
@@ -79,10 +70,8 @@ const Negociar = ({ selectedStockData }) => {
                     onChange={handleQuantityChange}
                   />
                 </S.InputWrapper>
-                {/* Se a quantidade for maior que 0, exibe as informações */}
                 {quantity > 0 ? (
                   <>
-                    <S.Label>Informações:</S.Label>
                     <S.Resumo>
                       <span>
                         Você está comprando{" "}
@@ -93,17 +82,17 @@ const Negociar = ({ selectedStockData }) => {
                             currency: "BRL",
                           }
                         )}{" "}
-                        em ações de {selectedStockData.companyName}.
+                        em ações de {selectedStockData.companyName}
                       </span>
                     </S.Resumo>
-                    <S.Label>Deseja confirmar a transação?</S.Label>
+                    <S.Confirm>Deseja confirmar essa transação?</S.Confirm>
                   </>
                 ) : (
                   <S.Label>Selecione a quantidade mínima</S.Label>
                 )}
               </>
             ) : (
-              <S.Label>Não há Stock selecionada</S.Label>
+              <S.Label>Não há ativo selecionado</S.Label>
             )}
           </S.InputGroup>
         </S.FormContent>
