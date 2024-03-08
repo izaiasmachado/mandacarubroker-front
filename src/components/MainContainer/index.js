@@ -6,10 +6,10 @@ import Main from "./Main";
 const MainGroup = () => {
   return (
     <S.Main>
-        <S.Conteiner>
-            <Hero />
-            <Main />
-        </S.Conteiner>
+      <S.Conteiner>
+        <Hero />
+        <Main />
+      </S.Conteiner>
     </S.Main>
   );
 };

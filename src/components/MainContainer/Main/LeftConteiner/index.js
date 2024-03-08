@@ -20,12 +20,12 @@ const LeftConteiner = ({sendDataToParent}) => {
     <S.LeftConteiner>
       <S.Controls>
         <Button          
-          text="Stocks"
+          text="Ativos disponíveis"
           clicked={selectedTransactionType === "buy"}
           onClick={() => handleButtonClick("buy")}
         />
         <Button
-          text="Portifólio"
+          text="Portifólio de Ativos"
           clicked={selectedTransactionType === "sell"}
           onClick={() => handleButtonClick("sell")}
         />

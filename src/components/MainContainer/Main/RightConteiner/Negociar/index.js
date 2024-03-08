@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+
+import { useBalance } from "@/contexts/BalanceContext";
+import { useUser } from "@/contexts/UserContext";
+import Balance from "@/components/BalanceGroup";
 import { useStock } from "@/contexts/StockContext";
 import { useTransactionType } from "@/contexts/TransationTypeContext";
 
@@ -11,6 +15,8 @@ const Negociar = ({ selectedStockData }) => {
   const { selectedTransactionType } = useTransactionType();
   const [transactionType, setTransactionType] = useState(selectedTransactionType);
   const { selectedStock } = useStock();
+  const { decrementBalance } = useBalance();
+  const { fetchPortfolio } = useUser();
 
   useEffect(() => {
     if (selectedStockData) {
@@ -28,25 +34,27 @@ const Negociar = ({ selectedStockData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("stock.id", value);
-    console.log("shares:", quantity);
-    console.log("type:", transactionType);
 
     try {
       const response = await api.post(`/portfolio/stock/${value}/buy`, {
         shares: quantity,
       });
-      console.log("Status da requisição:", response.status);
-      console.log(response.data);
+
+      const buyValue = quantity * selectedStockData.price;
+      decrementBalance(buyValue);
     } catch (error) {
       if (error.response.status === 422) {
         console.error("Você não possui saldo suficiente");
       }
+    } finally {
+      fetchPortfolio();
     }
   };
 
   return (
     <S.Container>
+      <Balance />
+
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
