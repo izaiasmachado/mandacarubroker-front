@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       console.error("Erro ao buscar portfolio:", error);
     }
-  });
+  }, []);
 
   useEffect(() => {
     const fetchPortfolioStock = async () => {

@@ -34,7 +34,7 @@ const Negociar = ({ selectedStockData }) => {
 
     try {
       const response = await api.post(
-        `/portfolio/stock/${value}/${transactionType}`,
+        `/portfolio/stock/${selectedStock.id}/${transactionType}`,
         {
           shares: quantity,
         }
