@@ -37,7 +37,7 @@ const Table = ({ sendDataToParent }) => {
         <h1>Minha Carteira</h1>
         <h3>
           Essa é sua carteira de ações. Acesse o menu Negociar para realizar a
-          venda
+          compra/venda de ativos
         </h3>
       </S.Wrapper>
 

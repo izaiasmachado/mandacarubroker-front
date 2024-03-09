@@ -47,7 +47,7 @@ const Table = ({ sendDataToParent }) => {
         <h1>Ações</h1>
         <h3>
           Abaixo estão listadas as principais ações disponíveis para compra no
-          mercado. Acesse o menu Negociar para realizar a venda
+          mercado. Acesse o menu Negociar para realizar a compra/venda de ativos
         </h3>
       </S.Wrapper>
 
