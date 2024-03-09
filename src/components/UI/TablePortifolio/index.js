@@ -32,37 +32,47 @@ const Table = ({ sendDataToParent }) => {
   });
 
   return (
-    <S.Container>
-      <S.Table>
-        <S.TableRowHeader>
-          <S.SelectHeader align={true}>Selecionar</S.SelectHeader>
+    <>
+      <S.Wrapper>
+        <h1>Minha Carteira</h1>
+        <h3>
+          Essa é sua carteira de ações. Acesse o menu Negociar para realizar a
+          compra/venda de ativos
+        </h3>
+      </S.Wrapper>
 
-          <S.TableHeader>Nome do ativo</S.TableHeader>
-          <S.TableHeader align>Cotação</S.TableHeader>
-          <S.TableHeader align>Ações</S.TableHeader>
-          <S.TableHeader>Posição (R$)</S.TableHeader>
-        </S.TableRowHeader>
-        {portfolio.length === 0 ? (
-          <S.TableRow>
-            <S.TableEmpty colSpan="5">
-              Você não possui ações em seu portifólio.
-            </S.TableEmpty>
-          </S.TableRow>
-        ) : (
-          sortedPortfolio.map((data, index) => (
-            <StockRow
-              key={data.id}
-              selectedStock={selectedStock}
-              data={data.stock}
-              handleRadioChange={handleRadioChange}
-              flip={index % 2 === 0}
-              totalShares={data.totalShares}
-              positionValue={data.positionValue}
-            />
-          ))
-        )}
-      </S.Table>
-    </S.Container>
+      <S.Container>
+        <S.Table>
+          <S.TableRowHeader>
+            <S.SelectHeader align={true}>Selecionar</S.SelectHeader>
+
+            <S.TableHeader>Nome do ativo</S.TableHeader>
+            <S.TableHeader align>Cotação</S.TableHeader>
+            <S.TableHeader align>Ações</S.TableHeader>
+            <S.TableHeader>Posição (R$)</S.TableHeader>
+          </S.TableRowHeader>
+          {portfolio.length === 0 ? (
+            <S.TableRow>
+              <S.TableEmpty colSpan="5">
+                Você não possui ações em seu portifólio.
+              </S.TableEmpty>
+            </S.TableRow>
+          ) : (
+            sortedPortfolio.map((data, index) => (
+              <StockRow
+                key={data.id}
+                selectedStock={selectedStock}
+                data={data.stock}
+                handleRadioChange={handleRadioChange}
+                flip={index % 2 === 0}
+                totalShares={data.totalShares}
+                positionValue={data.positionValue}
+              />
+            ))
+          )}
+        </S.Table>
+      </S.Container>
+    </>
   );
 };
 

@@ -42,24 +42,34 @@ const Table = ({ sendDataToParent }) => {
   });
 
   return (
-    <S.Container>
-      <S.Table>
-        <S.TableRowHeader>
-          <S.SelectHeader align={true}>Selecionar</S.SelectHeader>
-          <S.TableHeader>Nome do ativo</S.TableHeader>
-          <S.TableHeader align>Cotação</S.TableHeader>
-        </S.TableRowHeader>
-        {sortedPortfolio.map((data, index) => (
-          <StockRow
-            key={data.id}
-            selectedStock={selectedStock}
-            data={data}
-            flip={index % 2 === 0}
-            handleRadioChange={handleRadioChange}
-          />
-        ))}
-      </S.Table>
-    </S.Container>
+    <>
+      <S.Wrapper>
+        <h1>Ações</h1>
+        <h3>
+          Abaixo estão listadas as principais ações disponíveis para compra no
+          mercado. Acesse o menu Negociar para realizar a compra/venda de ativos
+        </h3>
+      </S.Wrapper>
+
+      <S.Container>
+        <S.Table>
+          <S.TableRowHeader>
+            <S.SelectHeader align={true}>Selecionar</S.SelectHeader>
+            <S.TableHeader>Nome do ativo</S.TableHeader>
+            <S.TableHeader align>Cotação</S.TableHeader>
+          </S.TableRowHeader>
+          {sortedPortfolio.map((data, index) => (
+            <StockRow
+              key={data.id}
+              selectedStock={selectedStock}
+              data={data}
+              flip={index % 2 === 0}
+              handleRadioChange={handleRadioChange}
+            />
+          ))}
+        </S.Table>
+      </S.Container>
+    </>
   );
 };
 
