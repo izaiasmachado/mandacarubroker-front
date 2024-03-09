@@ -32,6 +32,11 @@ export default function Cadastro() {
     if (username.length === 0) {
       return "Nome de usuário não pode ficar vazio";
     }
+
+    if (username.includes(" ")) {
+      return "Nome de usuário não pode conter espaços";
+    }
+
     return false;
   };
 
@@ -150,7 +155,7 @@ export default function Cadastro() {
             <CadastroTitle>Cadastro</CadastroTitle>
             <Input
               type="text"
-              placeholder="Nome de usuário"
+              placeholder="Usuário"
               onChange={(e) => setUsername(e.target.value)}
               required={usernameError || (submitted && username.length === 0)}
             ></Input>
