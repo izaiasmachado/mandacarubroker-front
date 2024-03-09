@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
   const [portfolio, setPortfolio] = useState([]);
   const { saveBalance } = useBalance();
   const [selectedStock, setSelectedStock] = useState(null);
-  const [selectedStockQuantity, setSelectedStockQuantity] = useState(0);
+  const [selectedStockPortfolio, setSelectedStockPortfolio] = useState(null);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -47,6 +47,19 @@ export const UserProvider = ({ children }) => {
     }
   });
 
+  useEffect(() => {
+    const fetchPortfolioStock = async () => {
+      try {
+        const response = await api.get(`/portfolio/stock/${selectedStock.id}`);
+        setSelectedStockPortfolio(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar portfolio:", error);
+      }
+    };
+
+    fetchPortfolioStock();
+  }, [selectedStock]);
+
   return (
     <UserContext.Provider
       value={{
@@ -57,8 +70,7 @@ export const UserProvider = ({ children }) => {
         fetchPortfolio,
         selectedStock,
         setSelectedStock,
-        selectedStockQuantity,
-        setSelectedStockQuantity,
+        selectedStockPortfolio,
       }}
     >
       {children}

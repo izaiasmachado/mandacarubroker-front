@@ -4,17 +4,18 @@ import TablePortifolio from "@/components/UI/TablePortifolio";
 import TableStocks from "@/components/UI/TableStocks";
 import * as S from "./styles";
 import Button from "@/components/UI/Button";
+import { useUser } from "@/contexts/UserContext";
 
 const LeftConteiner = ({ sendDataToParent }) => {
   const [activeTable, setactiveTable] = useState("stocks");
-  const [selectedStockData, setSelectedStockData] = useState(null);
+  const { setSelectedStock } = useUser();
 
   const handleButtonClick = (buttonName) => {
     setactiveTable(buttonName);
   };
 
   const handleDataFromChild = (data) => {
-    setSelectedStockData(data);
+    setSelectedStock(data);
     sendDataToParent(data);
   };
 
