@@ -86,6 +86,10 @@ export const ApplicationHeroTitle = styled.div`
   gap: 10px;
   font-size: 7.2rem;
   margin-top: -130px;
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
 `;
 
 export const ApplicationHeroTitleFirstLine = styled.div`
