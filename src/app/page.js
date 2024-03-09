@@ -61,12 +61,7 @@ export default function Login() {
       <LoginWrapper>
         <ApplicationHeroTitleContainer>
           <ApplicationHeroTitle>
-            <ApplicationHeroTitleFirstLine>
-              MANDACARU
-            </ApplicationHeroTitleFirstLine>
-            <ApplicationHeroTitleSecondLine>
-              BROKER
-            </ApplicationHeroTitleSecondLine>
+            <img src="img/logoMandacaruBroker.webp" alt="Logo Mandacaru.dev" />
           </ApplicationHeroTitle>
         </ApplicationHeroTitleContainer>
         <LoginConteiner>

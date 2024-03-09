@@ -41,6 +41,7 @@ export const CadastroFormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 280px;
   gap: 20px;
 `;
 
@@ -82,13 +83,13 @@ export const TopToolbar = styled.div`
 
 export const ErrorMessagesContainer = styled.div`
   width: 100%;
-  max-width: 250px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex;
 `;
 
 export const ErrorMessage = styled.p`
   color: red;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1.4rem;
 `;

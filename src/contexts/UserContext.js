@@ -47,16 +47,16 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchPortfolioStock = async () => {
-      try {
-        const response = await api.get(`/portfolio/stock/${selectedStock.id}`);
-        setSelectedStockPortfolio(response.data);
-      } catch (error) {
-        console.error("Erro ao buscar portfolio:", error);
-      }
-    };
+  const fetchPortfolioStock = useCallback(async () => {
+    try {
+      const response = await api.get(`/portfolio/stock/${selectedStock.id}`);
+      setSelectedStockPortfolio(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar portfolio:", error);
+    }
+  }, [selectedStock]);
 
+  useEffect(() => {
     fetchPortfolioStock();
   }, [selectedStock]);
 
@@ -71,6 +71,7 @@ export const UserProvider = ({ children }) => {
         selectedStock,
         setSelectedStock,
         selectedStockPortfolio,
+        fetchPortfolioStock,
       }}
     >
       {children}
