@@ -38,7 +38,7 @@ const Navbar = () => {
       <Container>
         <LogoWrapper>
           <LogoImg
-            src="./img/logoMandacaruBroker.png"
+            src="./img/logoMandacaruBroker.webp"
             alt="Mandacaru Broker Logo"
           />
         </LogoWrapper>
