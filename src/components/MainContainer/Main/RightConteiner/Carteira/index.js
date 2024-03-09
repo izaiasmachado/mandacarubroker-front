@@ -44,7 +44,8 @@ const Carteira = () => {
   const amountNumber = amountToNumber(value);
   const isButtonDisabled =
     amountNumber <= 0 ||
-    (transactionType === "withdraw" && amountNumber > balance);
+    (transactionType === "withdraw" && amountNumber > balance) ||
+    (transactionType === "deposit" && amountNumber >= 1000000000);
 
   return (
     <S.Container>
