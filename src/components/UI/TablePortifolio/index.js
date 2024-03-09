@@ -49,7 +49,7 @@ const Table = ({ sendDataToParent }) => {
             <S.TableHeader>Nome do ativo</S.TableHeader>
             <S.TableHeader align>Cotação</S.TableHeader>
             <S.TableHeader align>Ações</S.TableHeader>
-            <S.TableHeader>Posição (R$)</S.TableHeader>
+            <S.TableHeader>Posição</S.TableHeader>
           </S.TableRowHeader>
           {portfolio.length === 0 ? (
             <S.TableRow>
