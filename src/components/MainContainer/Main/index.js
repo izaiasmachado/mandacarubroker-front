@@ -13,7 +13,7 @@ const Main = () => {
   return (
     <S.Main>
       <LeftConteiner sendDataToParent={handleDataFromChild} />
-      <RightConteiner selectedStockData={selectedStockData} />
+      <RightConteiner />
     </S.Main>
   );
 };

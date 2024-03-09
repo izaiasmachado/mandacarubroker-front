@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useUser } from "@/contexts/UserContext";
 
 import * as S from "./styles";
@@ -16,11 +16,8 @@ const Table = ({ sendDataToParent }) => {
 
   const handleRadioChange = (data) => {
     setSelectedStock(data);
-    sendDataToParent(data); // Envia os dados para o componente pai
-    console.log(data);
+    sendDataToParent(data);
   };
-
-  console.log(portfolio);
 
   const sortedPortfolio = portfolio.sort((a, b) => {
     if (a.stock.symbol < b.stock.symbol) {
@@ -33,8 +30,6 @@ const Table = ({ sendDataToParent }) => {
 
     return 0;
   });
-
-  console.log(sortedPortfolio);
 
   return (
     <>

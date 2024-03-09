@@ -10,15 +10,9 @@ import Balance from "@/components/BalanceGroup";
 const Negociar = ({ selectedStockData }) => {
   const [value, setValue] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [transactionType, setTransactionType] = useState("compra");
-  const { decrementBalance } = useBalance();
-  const { fetchPortfolio } = useUser();
-
-  useEffect(() => {
-    if (selectedStockData) {
-      setValue(selectedStockData.id);
-    }
-  }, [selectedStockData]);
+  const [transactionType, setTransactionType] = useState("buy");
+  const { decrementBalance, incrementBalance, balance } = useBalance();
+  const { fetchPortfolio, selectedStock, selectedStockPortfolio } = useUser();
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -32,16 +26,25 @@ const Negociar = ({ selectedStockData }) => {
     setTransactionType(e.target.value);
   };
 
+  const buyValue = quantity * selectedStock?.price;
+  console.log(selectedStockPortfolio);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.post(`/portfolio/stock/${value}/buy`, {
-        shares: quantity,
-      });
+      const response = await api.post(
+        `/portfolio/stock/${selectedStock.id}/${transactionType}`,
+        {
+          shares: quantity,
+        }
+      );
 
-      const buyValue = quantity * selectedStockData.price;
-      decrementBalance(buyValue);
+      if (transactionType === "buy") {
+        decrementBalance(buyValue);
+      } else {
+        incrementBalance(buyValue);
+      }
     } catch (error) {
       if (error.response.status === 422) {
         console.error("Você não possui saldo suficiente");
@@ -58,13 +61,13 @@ const Negociar = ({ selectedStockData }) => {
       <form onSubmit={handleSubmit}>
         <S.FormContent>
           <S.InputGroup>
-            {selectedStockData ? (
+            {selectedStock ? (
               <>
                 <S.InputWrapper>
                   <S.Label>Ação selecionada:</S.Label>
                   <S.Input
                     type="text"
-                    value={selectedStockData.symbol}
+                    value={selectedStock.symbol}
                     onChange={handleValueChange}
                   />
                 </S.InputWrapper>
@@ -78,19 +81,47 @@ const Negociar = ({ selectedStockData }) => {
                     onChange={handleQuantityChange}
                   />
                 </S.InputWrapper>
+
+                <S.InputWrapper>
+                  <S.Label>Tipo de Transação:</S.Label>
+                  <S.RadioWrapper>
+                    <S.RadioLabel>
+                      <S.RadioButton
+                        type="radio"
+                        name="transactionType"
+                        value="buy"
+                        checked={transactionType === "buy"}
+                        onChange={handleTransactionTypeChange}
+                      />
+                      <S.Label>Compra</S.Label>
+                    </S.RadioLabel>
+                    <S.RadioLabel>
+                      <S.RadioButton
+                        type="radio"
+                        name="transactionType"
+                        value="sell"
+                        checked={transactionType === "sell"}
+                        onChange={handleTransactionTypeChange}
+                      />
+                      <S.Label>Venda</S.Label>
+                    </S.RadioLabel>
+                  </S.RadioWrapper>
+                </S.InputWrapper>
+
                 {quantity > 0 ? (
                   <>
                     <S.Resumo>
                       <span>
-                        Você está comprando{" "}
-                        {(quantity * selectedStockData.price).toLocaleString(
+                        Você está{" "}
+                        {transactionType == "buy" ? "comprando" : "vendendo"}{" "}
+                        {(quantity * selectedStock.price).toLocaleString(
                           "pt-BR",
                           {
                             style: "currency",
                             currency: "BRL",
                           }
                         )}{" "}
-                        em ações de {selectedStockData.companyName}
+                        em ações de {selectedStock.companyName}
                       </span>
                     </S.Resumo>
                     <S.Confirm>Deseja confirmar essa transação?</S.Confirm>
@@ -105,7 +136,12 @@ const Negociar = ({ selectedStockData }) => {
           </S.InputGroup>
         </S.FormContent>
         <Button
-          disabled={quantity == 0}
+          disabled={
+            quantity == 0 ||
+            (transactionType == "buy" && buyValue > balance) ||
+            (transactionType == "sell" &&
+              quantity > selectedStockPortfolio?.totalShares)
+          }
           text="Confirmar"
           width={"100%"}
           height={"30px"}
