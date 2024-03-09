@@ -18,6 +18,7 @@ export const UserProvider = ({ children }) => {
   const [portfolio, setPortfolio] = useState([]);
   const { saveBalance } = useBalance();
   const [selectedStock, setSelectedStock] = useState(null);
+  const [selectedStockQuantity, setSelectedStockQuantity] = useState(0);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -56,6 +57,8 @@ export const UserProvider = ({ children }) => {
         fetchPortfolio,
         selectedStock,
         setSelectedStock,
+        selectedStockQuantity,
+        setSelectedStockQuantity,
       }}
     >
       {children}
