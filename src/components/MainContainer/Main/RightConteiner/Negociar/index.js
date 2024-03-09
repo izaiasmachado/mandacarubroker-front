@@ -12,7 +12,12 @@ const Negociar = ({ selectedStockData }) => {
   const [quantity, setQuantity] = useState("");
   const [transactionType, setTransactionType] = useState("buy");
   const { decrementBalance, incrementBalance, balance } = useBalance();
-  const { fetchPortfolio, selectedStock, selectedStockPortfolio } = useUser();
+  const {
+    fetchPortfolio,
+    selectedStock,
+    selectedStockPortfolio,
+    fetchPortfolioStock,
+  } = useUser();
 
   const handleValueChange = (e) => {
     setValue(e.target.value);
@@ -51,6 +56,7 @@ const Negociar = ({ selectedStockData }) => {
       }
     } finally {
       fetchPortfolio();
+      fetchPortfolioStock();
     }
   };
 
@@ -140,6 +146,7 @@ const Negociar = ({ selectedStockData }) => {
             quantity == 0 ||
             (transactionType == "buy" && buyValue > balance) ||
             (transactionType == "sell" &&
+              selectedStockPortfolio &&
               quantity > selectedStockPortfolio?.totalShares)
           }
           text="Confirmar"
